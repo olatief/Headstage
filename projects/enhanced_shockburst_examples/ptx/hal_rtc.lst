@@ -1,0 +1,135 @@
+C51 COMPILER V8.12   HAL_RTC                                                               02/21/2011 14:14:00 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE HAL_RTC
+OBJECT MODULE PLACED IN .\hal_rtc.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\..\hal\nrf24le1\hal_rtc.c LARGE BROWSE INCDIR(..\..\..\hal\nrf24le1;.
+                    -.\..\..\hal\nrf24l01p;..\..\..\hal;..\..\..\compiler\c51) DEFINE(MCU_NRF24LE1) DEBUG OBJECTEXTEND PRINT(.\hal_rtc.lst) O
+                    -BJECT(.\hal_rtc.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5717 $
+  12           */ 
+  13          
+  14          /** @file
+  15           * @brief Implementation of hal_rtc
+  16           */
+  17          
+  18          #include <Nordic\reg24le1.h>
+*** WARNING C318 IN LINE 18 OF ..\..\..\hal\nrf24le1\hal_rtc.c: can't open file 'Nordic\reg24le1.h'
+  19          #include "hal_rtc.h"
+  20          #include "nordic_common.h"
+  21          
+  22          void hal_rtc_capture(void)
+  23          {
+  24   1        RTC2CON |= BIT_4;                         // Set "sfrCapture" bit(Trig. sig.)
+*** ERROR C202 IN LINE 24 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  25   1      }
+  26          
+  27          void hal_rtc_radio_capture_enable(bool en)
+  28          {
+  29   1        if(en)
+  30   1        {
+  31   2          RTC2CON |= BIT_3;                       // Set "enableExtCapture" bit
+*** ERROR C202 IN LINE 31 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  32   2        }
+  33   1        else
+  34   1        {
+  35   2          RTC2CON &= ~BIT_3;                      // Clear "enableExtCapture" bit
+*** ERROR C202 IN LINE 35 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  36   2        }
+  37   1      }
+  38          
+  39          void hal_rtc_set_compare_mode(hal_rtc_compare_mode_t mode)
+  40          {
+  41   1        RTC2CON = (RTC2CON & 0xF9) | ((mode << 1) & ~0xF9); // Set "compareMode" bits
+*** ERROR C202 IN LINE 41 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  42   1      }
+  43          
+  44          void hal_rtc_start(bool en)
+  45          {
+  46   1        if(en)
+  47   1        { 
+  48   2          RTC2CON |= BIT_0;                       // Set "rtc2Enable" bit
+C51 COMPILER V8.12   HAL_RTC                                                               02/21/2011 14:14:00 PAGE 2   
+
+*** ERROR C202 IN LINE 48 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  49   2        }
+  50   1        else
+  51   1        {
+  52   2          RTC2CON &= ~BIT_0;                      // Clear "rtc2Enable" bit
+*** ERROR C202 IN LINE 52 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  53   2        }
+  54   1      }
+  55          
+  56          void hal_rtc_set_compare_value(uint16_t value)
+  57          {
+  58   1        uint8_t compare_status;                   
+  59   1        compare_status = (RTC2CON & (BIT_1 | BIT_2)); // Save "compareMode" bits
+*** ERROR C202 IN LINE 59 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  60   1        RTC2CON &= ~(BIT_1 | BIT_2);              // Disable compare
+*** ERROR C202 IN LINE 60 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  61   1        RTC2CMP0 = LSB(value);                    // Write LSB
+*** ERROR C202 IN LINE 61 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CMP0': undefined identifier
+  62   1        RTC2CMP1 = MSB(value);                    // Write MSB
+*** ERROR C202 IN LINE 62 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CMP1': undefined identifier
+  63   1        RTC2CON |= compare_status;                // Update compare status 
+*** ERROR C202 IN LINE 63 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  64   1      }
+  65          
+  66          uint16_t hal_rtc_get_compare_value(void)
+  67          {
+  68   1        uint8_t compare_status;  
+  69   1        uint16_t value;                           // Create temporary output variable
+  70   1        compare_status = (RTC2CON & (BIT_1 | BIT_2)); // Save "compareMode" bits
+*** ERROR C202 IN LINE 70 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  71   1        RTC2CON &= ~(BIT_1 | BIT_2);              // Disable compare
+*** ERROR C202 IN LINE 71 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  72   1        value = RTC2CMP1;                         // Read MSB
+*** ERROR C202 IN LINE 72 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CMP1': undefined identifier
+  73   1        value <<= 8;                              // Shift to correct position
+  74   1        value |= RTC2CMP0;                        // Add LSB
+*** ERROR C202 IN LINE 74 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CMP0': undefined identifier
+  75   1        RTC2CON |= compare_status;                // Update compare status 
+*** ERROR C202 IN LINE 75 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  76   1        return value;                             // Return compare value
+  77   1      }
+  78          
+  79          uint16_t hal_rtc_get_capture_value(void)
+  80          {
+  81   1        uint8_t capture_status;                 
+  82   1        uint16_t value;                           // Create temporary output variable
+  83   1        capture_status = (RTC2CON & BIT_3);       // Save "compareMode" bits
+*** ERROR C202 IN LINE 83 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  84   1        RTC2CON &= ~BIT_3;                        // Disable compare
+*** ERROR C202 IN LINE 84 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  85   1        value = RTC2CPT01;                        // Read MSB
+*** ERROR C202 IN LINE 85 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CPT01': undefined identifier
+  86   1        value <<= 8;                              // Shift to correct position
+  87   1        value |= RTC2CPT00;                       // Add LSB
+*** ERROR C202 IN LINE 87 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CPT00': undefined identifier
+  88   1        RTC2CON |= capture_status;                // Update external capture status
+*** ERROR C202 IN LINE 88 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CON': undefined identifier
+  89   1        return value;                             // Return timer value
+  90   1      }
+  91          
+  92          uint8_t hal_rtc_get_capture_clock_cycles(void)
+  93          {
+C51 COMPILER V8.12   HAL_RTC                                                               02/21/2011 14:14:00 PAGE 3   
+
+  94   1        return RTC2CPT10;                         // Return register
+*** ERROR C202 IN LINE 94 OF ..\..\..\HAL\NRF24LE1\HAL_RTC.C: 'RTC2CPT10': undefined identifier
+  95   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  22 ERROR(S)

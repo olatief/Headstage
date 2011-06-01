@@ -1,0 +1,6 @@
+"main.obj",
+".\hal_nrf.obj",
+".\hal_nrf_hw.obj" 
+TO "enhanced_shockburst_prx_lu1p" 
+RAMSIZE(256) 
+DISABLEWARNING (15, 16) 

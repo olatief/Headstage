@@ -1,0 +1,15 @@
+".\build\STARTUP.obj",
+".\build\main.obj",
+".\build\usb.obj",
+".\build\bootloader.obj",
+".\build\flash.obj",
+".\build\usb_desc_bootloader.obj" 
+TO ".\build\boot24lu1p-f32" 
+
+PRINT(".\list\boot24lu1p-f32.map") REMOVEUNUSED 
+CLASSES (CODE (C:0x7800-C:0x7FFF), CONST (C:0x7800-C:0x7FFF), 
+ECODE (C:0x7800-C:0x7FFF), HCONST (C:0x7800-C:0x7FFF) , 
+SROM ( C:0x79A0),
+CODE_BOOTLOADER(C:0x8000) [ ],
+CONST_BOOTLOADER(C:0x8700) [ ]) 
+SEGMENTS ( ?C_C51STARTUP(C:0x7800) ) 

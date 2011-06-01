@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"main.obj",
+".\hal_nrf_hw.obj",
+".\hal_spi.obj" 
+TO "basic" 
+RAMSIZE(256) 
+XDATA( 0X0000-0X03FF )

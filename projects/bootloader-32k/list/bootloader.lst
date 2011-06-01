@@ -1,0 +1,234 @@
+C51 COMPILER V8.12   BOOTLOADER                                                            02/01/2011 15:40:55 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE BOOTLOADER
+OBJECT MODULE PLACED IN .\build\bootloader.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE bootloader.c OMF2 ROM(COMPACT) OPTIMIZE(9,SPEED) BROWSE INCDIR(..\..\compil
+                    -er\c51) DEBUG PRINT(.\list\bootloader.lst) OBJECT(.\build\bootloader.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5718 $
+  12           */
+  13          
+  14          /** @file
+  15           * This file contain parsing of USB commands
+  16           *
+  17           */
+  18          #include <Nordic\reg24lu1.h>
+  19          #include <intrins.h>
+  20          
+  21          #include "usb.h"
+  22          #include "bootloader.h"
+  23          #include "version.h"
+  24          #include "usb_cmds.h"
+  25          #include "flash.h"
+  26          #include "config.h"
+  27          
+  28          // Place all code and constants in this file in the segment "BOOTLOADER":
+  29          #pragma userclass (code = BOOTLOADER)
+  30          #pragma userclass (const = BOOTLOADER)
+  31          
+  32          extern bool packet_received;
+  33          
+  34          extern xdata volatile uint8_t in1buf[];
+  35          extern xdata volatile uint8_t out1buf[];
+  36          extern xdata volatile uint8_t in1bc;
+  37          
+  38          static xdata uint8_t rdismb _at_ 0x0023;                // Readback Disable byte in InfoPage
+  39          
+  40          static bool page_write;
+  41          static uint16_t nblock;                                 // Holds the number of the current USB_EP1_SIZE by
+             -tes block
+  42          static uint8_t nblocks;                                 // Holds number of the blocks programmed
+  43          
+  44          static bool idata used_flash_pages[NUM_FLASH_PAGES];    // Holds which flash pages to erase
+  45          
+  46          
+  47          void parse_commands(void)
+  48          {
+  49   1          uint8_t count = 0, tmp;
+  50   1      
+  51   1          if(page_write)
+  52   1          {
+  53   2              // Multiply nblock with 64 to get block start address in flash:
+C51 COMPILER V8.12   BOOTLOADER                                                            02/01/2011 15:40:55 PAGE 2   
+
+  54   2              flash_bytes_write(nblock << 6, out1buf, USB_EP1_SIZE);
+  55   2              nblock++;
+  56   2              nblocks++;
+  57   2              in1buf[0] = 0;
+  58   2              count = 1;
+  59   2              if (nblocks == (FLASH_PAGE_SIZE/USB_EP1_SIZE))
+  60   2              {
+  61   3                  page_write = false;
+  62   3              }
+  63   2          }
+  64   1          else
+  65   1          {
+  66   2              switch(out1buf[0])
+  67   2              {
+  68   3                  case CMD_FIRMWARE_VERSION:
+  69   3                      in1buf[0] = FW_VER_MAJOR;
+  70   3                      in1buf[1] = FW_VER_MINOR;
+  71   3                      count = 2;
+  72   3                      break;
+  73   3      
+  74   3                  case CMD_FLASH_ERASE_PAGE:
+  75   3                      flash_page_erase(out1buf[1]);
+  76   3                      used_flash_pages[out1buf[1]] = false;
+  77   3                      in1buf[0] = 0;
+  78   3                      count = 1;
+  79   3                      break;
+  80   3      
+  81   3                  case CMD_FLASH_WRITE_INIT:                  // Eight 64 bytes bulk packets <- PC follow after 
+             -this command
+  82   3                      if (used_flash_pages[out1buf[1]])
+  83   3                      {
+  84   4                          flash_page_erase(out1buf[1]);
+  85   4                      }
+  86   3                      used_flash_pages[out1buf[1]] = 1;
+  87   3                      nblock = (uint16_t)out1buf[1] << 3;     // Multiply page number by 8 to get block number
+  88   3                      nblocks = 0;
+  89   3                      page_write = true;
+  90   3                      in1buf[0] = 0;
+  91   3                      count = 1;
+  92   3                      break;
+  93   3      
+  94   3                  case CMD_FLASH_READ:
+  95   3                      // Read one USB_EP1_SIZE bytes block from the address given
+  96   3                      // by out1buf[1] << 6 and MS bit set by CMD_FLASH_SELECT_HALF
+  97   3                      // below:
+  98   3                      nblock = (nblock & 0xff00) | (uint16_t)out1buf[1];
+  99   3                      if (RDIS)
+ 100   3                      {
+ 101   4                          // RDISMB is set. Will return 0x00 for pages that are in use and 0xff
+ 102   4                          // for unused pages.
+ 103   4                          if (used_flash_pages[nblock >> 3])
+ 104   4                              tmp = 0x00;
+ 105   4                          else
+ 106   4                              tmp = 0xff;
+ 107   4                          for(count=0;count<USB_EP1_SIZE;count++)
+ 108   4                              in1buf[count] = tmp;
+ 109   4                      } 
+ 110   3                      else
+ 111   3                          flash_bytes_read((uint16_t)nblock<<6, in1buf, USB_EP1_SIZE);
+ 112   3                      count = USB_EP1_SIZE;
+ 113   3                      break;
+ 114   3      
+C51 COMPILER V8.12   BOOTLOADER                                                            02/01/2011 15:40:55 PAGE 3   
+
+ 115   3                  case CMD_FLASH_SET_PROTECTED:
+ 116   3                      count = 1;
+ 117   3                      INFEN = 1;
+ 118   3                      if (rdismb != 0xff)
+ 119   3                      {
+ 120   4                          in1buf[0] = 1;
+ 121   4                      }
+ 122   3                      else
+ 123   3                      {
+ 124   4                          flash_byte_write((uint16_t)&rdismb, 0x00);
+ 125   4                          in1buf[0] = 0;
+ 126   4                      }
+ 127   3                      INFEN = 0;
+ 128   3                      break;
+ 129   3      
+ 130   3                  case CMD_FLASH_SELECT_HALF:
+ 131   3                      // When outbuf[1] = 0 program the lower half of the 32K bytes flash
+ 132   3                      // and when outbuf[1] = 1 program the upper part:
+ 133   3                      if (out1buf[1] == 1)
+ 134   3                          nblock = (nblock & 0x00ff) | 0x0100;
+ 135   3                      else
+ 136   3                          nblock &= 0x00ff;
+ 137   3                      in1buf[0] = 0;
+ 138   3                      count = 1;
+ 139   3                      break;
+ 140   3      
+ 141   3                  default:
+ 142   3                      break;
+ 143   3              }
+ 144   2          }
+ 145   1          if (count > 0)
+ 146   1              in1bc = count;
+ 147   1      }
+ 148          
+ 149          static void get_used_flash_pages(void)
+ 150          {    
+ 151   1          uint8_t xdata *pb;
+ 152   1          uint8_t i;
+ 153   1          uint16_t j;
+ 154   1          //
+ 155   1          // Read through the whole flash to find out which flash
+ 156   1          // pages that are in use. Store the result in the NUM_FLASH_PAGES
+ 157   1          // sized array used_flash_pages[]:
+ 158   1          for(i=0;i<NUM_FLASH_PAGES;i++)
+ 159   1          {
+ 160   2              used_flash_pages[i] = false;        
+ 161   2              for(j=0,pb = (uint8_t xdata *)(FLASH_PAGE_SIZE * (uint16_t)i);j<FLASH_PAGE_SIZE;j++, pb++)
+ 162   2              {
+ 163   3                  if(*pb != 0xff)
+ 164   3                  {
+ 165   4                      used_flash_pages[i] = true;
+ 166   4                      break;
+ 167   4                  }
+ 168   3              }
+ 169   2          }
+ 170   1      }
+ 171          
+ 172          void bootloader(void)
+ 173          {
+ 174   1          EA = 0;
+ 175   1          get_used_flash_pages();
+ 176   1          usb_init();
+C51 COMPILER V8.12   BOOTLOADER                                                            02/01/2011 15:40:55 PAGE 4   
+
+ 177   1          CKCON = 0x02;       // See nRF24LU1p AX PAN
+ 178   1          nblock = 0;
+ 179   1          packet_received = page_write = false;
+ 180   1          //
+ 181   1          // Enter an infinite loop waiting checking the USB interrupt flag and
+ 182   1          // call the interrupt handler, usb_irq, when the flag is set. The interrupt
+ 183   1          // handler will set the variable packet_received to true when a packet is
+ 184   1          // received.     
+ 185   1          for(;;)
+ 186   1          {
+ 187   2              if (USBF)
+ 188   2              {
+ 189   3                  USBF = 0;
+ 190   3                  usb_irq();
+ 191   3                  if(packet_received)
+ 192   3                  {
+ 193   4                      parse_commands();
+ 194   4                      packet_received = false;
+ 195   4                  }
+ 196   3              }
+ 197   2          }
+ 198   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    433    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       4
+   IDATA SIZE       =     64    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,180 @@
+C51 COMPILER V8.12   USB_DESC_BOOTLOADER                                                   02/01/2011 15:40:56 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE USB_DESC_BOOTLOADER
+OBJECT MODULE PLACED IN .\build\usb_desc_bootloader.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE usb_desc_bootloader.c OMF2 ROM(COMPACT) OPTIMIZE(9,SPEED) BROWSE INCDIR(..\
+                    -..\compiler\c51) DEBUG PRINT(.\list\usb_desc_bootloader.lst) OBJECT(.\build\usb_desc_bootloader.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5718 $
+  12           */
+  13          
+  14          /** @file
+  15           * USB descriptor for Bootloader
+  16           *
+  17           */
+  18          #include "config.h"
+  19          
+  20          // Place all code and constants in this file in the segment "BOOTLOADER":
+  21          #pragma userclass (code = BOOTLOADER)
+  22          #pragma userclass (const = BOOTLOADER)
+  23          
+  24          /** Swaps the upper byte with the lower byte in a 16 bit variable */
+  25          #define SWAP(x) ((((x)&0xFF)<<8)|(((x)>>8)&0xFF))
+  26          
+  27          #include "usb_desc_bootloader.h"
+  28          
+  29          
+  30          code usb_dev_desc_t g_usb_dev_desc = {
+  31            sizeof(usb_dev_desc_t), 
+  32            USB_DESC_DEVICE, 
+  33            SWAP(0x0200),       // bcdUSB
+  34            0xff,               // bDeviceClass
+  35            0xff,               // bDeviceSubclass
+  36            0xff,               // bDeviceProtocol
+  37            MAX_PACKET_SIZE_EP0,// bMaxPAcketSize0
+  38            SWAP(6421),         // idVendor - 6421 (0x1915) : Nordic Semiconductor ASA
+  39            SWAP(0x0909),       // idProduct
+  40            SWAP(0x0001),       // bcdDevice - Device Release Number (BCD)
+  41            0x01,               // iManufacturer
+  42            0x02,               // iProduct
+  43            0x00,               // iSerialNumber
+  44            0x01                // bNumConfigurations
+  45          };
+  46          
+  47          code usb_conf_desc_bootloader_t g_usb_conf_desc = 
+  48          {
+  49              {
+  50                  sizeof(usb_conf_desc_t),
+  51                  USB_DESC_CONFIGURATION,
+  52                  SWAP(sizeof(usb_conf_desc_bootloader_t)),
+  53                  1,            // bNumInterfaces
+  54                  1,            // bConfigurationValue
+C51 COMPILER V8.12   USB_DESC_BOOTLOADER                                                   02/01/2011 15:40:56 PAGE 2   
+
+  55                  2,            // iConfiguration
+  56                  0xE0,         // bmAttributes - D6: self-powered, bus powered: 0xA0
+  57                  50,           // bMaxPower
+  58              },
+  59              /* Interface Descriptor 0 */ 
+  60              {
+  61                  sizeof(usb_if_desc_t),
+  62                  USB_DESC_INTERFACE,
+  63                  0,            // bInterfaceNumber
+  64                  0,            // bAlternateSetting
+  65                  2,            // bNumEndpoints
+  66                  0xff,         // bInterfaceClass
+  67                  0x00,         // bInterfaceSubClass  
+  68                  0xff,         // bInterfaceProtocol 
+  69                  0x00,         // iInterface
+  70              },
+  71               /* Endpoint Descriptor EP1IN */
+  72               {
+  73                  sizeof(usb_ep_desc_t),
+  74                  USB_DESC_ENDPOINT,
+  75                  0x81,                   // bEndpointAddress
+  76                  USB_ENDPOINT_TYPE_BULK, // bmAttributes
+  77                  SWAP(USB_EP1_SIZE),     // wMaxPacketSize
+  78                  0x06                    // bInterval
+  79               },
+  80               /* Endpoint Descriptor EP1OUT */
+  81               {
+  82                  sizeof(usb_ep_desc_t),
+  83                  USB_DESC_ENDPOINT,
+  84                  0x01,                   // bEndpointAddress
+  85                  USB_ENDPOINT_TYPE_BULK, // bmAttributes
+  86                  SWAP(USB_EP1_SIZE),     // wMaxPacketSize
+  87                  0x06                    // bInterval
+  88              },
+  89          };
+  90          
+  91          #define USB_STRING_IDX_1_DESC "Nordic Semiconductor"
+  92          
+  93          code uint8_t g_usb_string_desc_1[] = 
+  94          {
+  95              sizeof(USB_STRING_IDX_1_DESC) * 2, 0x03,
+  96              'N', 00,
+  97              'o', 00,
+  98              'r', 00,
+  99              'd', 00,
+ 100              'i', 00,
+ 101              'c', 00,
+ 102              ' ', 00,
+ 103              'S', 00,
+ 104              'e', 00,
+ 105              'm', 00,
+ 106              'i', 00,
+ 107              'c', 00,
+ 108              'o', 00,
+ 109              'n', 00,
+ 110              'd', 00,
+ 111              'u', 00,
+ 112              'c', 00,
+ 113              't', 00,
+ 114              'o', 00,
+ 115              'r', 00 
+ 116          };
+C51 COMPILER V8.12   USB_DESC_BOOTLOADER                                                   02/01/2011 15:40:56 PAGE 3   
+
+ 117          
+ 118          #define USB_STRING_IDX_2_DESC "CID Wifi Headstage RX "
+ 119          
+ 120          code uint8_t g_usb_string_desc_2[] = 
+ 121          {
+ 122              sizeof(USB_STRING_IDX_2_DESC) * 2, 0x03,
+ 123              'C', 00,
+ 124              'I', 00,
+ 125              'D', 00,
+ 126              ' ', 00,
+ 127              'W', 00,
+ 128              'i', 00,
+ 129              'f', 00,
+ 130              'i', 00,
+ 131              ' ', 00,
+ 132              'H', 00,
+ 133              'e', 00,
+ 134              'a', 00,
+ 135              'd', 00,
+ 136              's', 00,
+ 137              't', 00,
+ 138              'a', 00,
+ 139              'g', 00,
+ 140              'e', 00,
+ 141              ' ', 00,
+ 142              'R', 00,
+ 143              'X', 00,
+ 144              ' ', 00
+ 145          };
+ 146          
+ 147          // This is for setting language American English (String descriptor 0 is an array of supported languages):
+ 148          code uint8_t string_zero[] = {0x04, 0x03, 0x09, 0x04} ;
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =    142    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

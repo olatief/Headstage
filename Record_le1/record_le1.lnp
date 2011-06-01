@@ -1,0 +1,8 @@
+"STARTUP.obj",
+"main.obj",
+".\hal_spi.obj",
+".\hal_nrf.obj",
+".\hal_nrf_hw.obj" 
+TO "record_le1" 
+RAMSIZE(256) 
+DISABLEWARNING (16) 

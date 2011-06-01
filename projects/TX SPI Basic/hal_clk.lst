@@ -1,0 +1,100 @@
+C51 COMPILER V8.12   HAL_CLK                                                               02/22/2011 11:45:15 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE HAL_CLK
+OBJECT MODULE PLACED IN .\hal_clk.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\hal\nrf24le1\hal_clk.c LARGE BROWSE INCDIR(..\..\compiler\c51;..\..\h
+                    -al\nrf24le1;..\..\hal) DEBUG OBJECTEXTEND PRINT(.\hal_clk.lst) OBJECT(.\hal_clk.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5717 $
+  12           */
+  13          
+  14          /** @file
+  15           * @brief Implementation of hal_clk 
+  16           */
+  17          
+  18          #include <stdint.h>
+  19          #include <stdbool.h>
+  20          
+  21          #include <Nordic\reg24le1.h>
+*** WARNING C318 IN LINE 21 OF ..\..\hal\nrf24le1\hal_clk.c: can't open file 'Nordic\reg24le1.h'
+  22          #include "hal_clk.h"
+  23          
+  24          void hal_clk_regret_xosc16m_on(bool on)
+  25          {
+  26   1        if(on)
+  27   1        {
+  28   2          CLKCTRL = (CLKCTRL | 0x80) & ~0x08;   // & ~0x08 to prevent writing 1 to this bit 
+*** ERROR C202 IN LINE 28 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKCTRL': undefined identifier
+  29   2        }
+  30   1        else
+  31   1        {
+  32   2          CLKCTRL = CLKCTRL & ~0x88;            // & ~0x08 to prevent writing 1 to this bit
+*** ERROR C202 IN LINE 32 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKCTRL': undefined identifier
+  33   2        }
+  34   1      }
+  35          
+  36          void hal_clk_set_input(hal_clk_input_t input)
+  37          {
+  38   1        CLKCTRL = (CLKCTRL & ~0x48) | ((input & 0x01) << 6); 
+*** ERROR C202 IN LINE 38 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKCTRL': undefined identifier
+  39   1      }
+  40          
+  41          void hal_clk_set_16m_source(hal_clk_source_t source)
+  42          {
+  43   1        CLKCTRL = ((CLKCTRL & ~0x38) | ((source & 0x03) << 4));
+*** ERROR C202 IN LINE 43 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKCTRL': undefined identifier
+  44   1      }
+  45          
+  46          hal_clk_source_t hal_clk_get_16m_source()
+  47          {
+  48   1        if(CLKLFCTRL & 0x08)
+*** ERROR C202 IN LINE 48 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKLFCTRL': undefined identifier
+C51 COMPILER V8.12   HAL_CLK                                                               02/22/2011 11:45:15 PAGE 2   
+
+  49   1        {
+  50   2          return HAL_CLK_XOSC16M;
+  51   2        }
+  52   1        else
+  53   1        {
+  54   2          return HAL_CLK_RCOSC16M;
+  55   2        }
+  56   1      }
+  57          
+  58          void hal_clk_set_freq(hal_clk_freq_t freq)
+  59          {
+  60   1        CLKCTRL = ((CLKCTRL & ~0x0F) | (freq & 0x07)); // & ~0x08 to prevent writing 1 to this bit
+*** ERROR C202 IN LINE 60 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKCTRL': undefined identifier
+  61   1      }
+  62          
+  63          bool hal_clklf_phase()
+  64          {
+  65   1        return((CLKLFCTRL & 0x80) > 0);
+*** ERROR C202 IN LINE 65 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKLFCTRL': undefined identifier
+  66   1      }
+  67          
+  68          bool hal_clklf_ready()
+  69          {
+  70   1        return((CLKLFCTRL & 0x40) > 0);
+*** ERROR C202 IN LINE 70 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKLFCTRL': undefined identifier
+  71   1      }
+  72          
+  73          void hal_clklf_set_source(hal_clklf_source_t source)
+  74          {
+  75   1        CLKLFCTRL = (CLKLFCTRL & ~0x07) | (source & 0x07);
+*** ERROR C202 IN LINE 75 OF ..\..\HAL\NRF24LE1\HAL_CLK.C: 'CLKLFCTRL': undefined identifier
+  76   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  9 ERROR(S)

@@ -1,0 +1,7 @@
+"main.obj",
+".\hal_adc.obj" 
+TO "adc_continuous_nrf24le1" 
+RAMSIZE(256) 
+DISABLEWARNING (15, 16) 
+CODE( 0X0000-0X3FFF )
+XDATA( 0X0000-0XFFFE )

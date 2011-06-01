@@ -1,0 +1,274 @@
+BL51 BANKED LINKER/LOCATER V6.20                                                        01/12/2010  14:00:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj, .\hal_adc.obj TO adc_continuous_nrf24le1 RAMSIZE (256) DISABLEWARNING (15, 16) CODE (
+>> 0X0000-0X3FFF) XDATA (0X0000-0XFFFE)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  .\hal_adc.obj (HAL_ADC)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  adc_continuous_nrf24le1 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     003DH     UNIT         ?PR?ADC_IRQ?MAIN
+            CODE    0040H     0010H     UNIT         ?PR?_HAL_ADC_SET_INPUT_CHANNEL?HAL_ADC
+            CODE    0050H     0010H     UNIT         ?PR?_HAL_ADC_SET_SAMPLING_RATE?HAL_ADC
+            CODE    0060H     0003H     UNIT         ?PR?HAL_ADC_READ_LSB?HAL_ADC
+            CODE    0063H     0003H     ABSOLUTE     
+            CODE    0066H     002EH     UNIT         ?PR?MAIN?MAIN
+            CODE    0094H     0010H     UNIT         ?PR?_HAL_ADC_SET_POWER_DOWN_DELAY?HAL_ADC
+            CODE    00A4H     0010H     UNIT         ?PR?HAL_ADC_BUSY?HAL_ADC
+            CODE    00B4H     000FH     UNIT         ?PR?_HAL_ADC_SET_INPUT_MODE?HAL_ADC
+            CODE    00C3H     000FH     UNIT         ?PR?_HAL_ADC_SET_RESOLUTION?HAL_ADC
+            CODE    00D2H     000EH     UNIT         ?PR?_HAL_ADC_SET_CONVERSION_MODE?HAL_ADC
+            CODE    00E0H     000EH     UNIT         ?PR?_HAL_ADC_SET_DATA_JUST?HAL_ADC
+            CODE    00EEH     000CH     UNIT         ?PR?_HAL_ADC_SET_REFERENCE?HAL_ADC
+            CODE    00FAH     000CH     UNIT         ?PR?_HAL_ADC_SET_ACQ_WINDOW?HAL_ADC
+            CODE    0106H     000CH     UNIT         ?PR?HAL_ADC_START?HAL_ADC
+            CODE    0112H     000CH     UNIT         ?C_C51STARTUP
+            CODE    011EH     000BH     UNIT         ?PR?HAL_ADC_GET_OVERFLOW_STATUS?HAL_ADC
+            CODE    0129H     0003H     UNIT         ?PR?HAL_ADC_READ_MSB?HAL_ADC
+
+
+
+OVERLAY MAP OF MODULE:   adc_continuous_nrf24le1 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?ADC_IRQ?MAIN
+  +--> ?PR?HAL_ADC_READ_LSB?HAL_ADC
+
+*** NEW ROOT ***************************************************
+
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:29  PAGE 2
+
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_HAL_ADC_SET_INPUT_CHANNEL?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_REFERENCE?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_INPUT_MODE?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_CONVERSION_MODE?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_SAMPLING_RATE?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_RESOLUTION?HAL_ADC
+  +--> ?PR?_HAL_ADC_SET_DATA_JUST?HAL_ADC
+  +--> ?PR?HAL_ADC_START?HAL_ADC
+
+
+
+SYMBOL TABLE OF MODULE:  adc_continuous_nrf24le1 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  C:0066H         PUBLIC        main
+  B:00B8H.4       PUBLIC        MISC
+  D:0088H         PUBLIC        TCON
+  C:0003H         PUBLIC        adc_irq
+  D:0094H         PUBLIC        P1DIR
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  -------         PROC          MAIN
+  C:0066H         LINE#         29
+  C:0066H         LINE#         30
+  C:0066H         LINE#         32
+  C:0069H         LINE#         35
+  C:006DH         LINE#         36
+  C:0072H         LINE#         37
+  C:0077H         LINE#         38
+  C:007CH         LINE#         39
+  C:0081H         LINE#         40
+  C:0086H         LINE#         41
+  C:008BH         LINE#         44
+  C:008DH         LINE#         46
+  C:008FH         LINE#         48
+  C:0092H         LINE#         50
+  -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:29  PAGE 3
+
+
+  -------         PROC          ADC_IRQ
+  C:0003H         LINE#         55
+  C:0020H         LINE#         58
+  C:0025H         LINE#         59
+  -------         ENDPROC       ADC_IRQ
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        HAL_ADC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  C:0060H         PUBLIC        hal_adc_read_LSB
+  D:00A0H         PUBLIC        P2
+  C:0129H         PUBLIC        hal_adc_read_MSB
+  C:00FAH         PUBLIC        _hal_adc_set_acq_window
+  D:00B0H         PUBLIC        P3
+  C:00EEH         PUBLIC        _hal_adc_set_reference
+  C:00B4H         PUBLIC        _hal_adc_set_input_mode
+  D:00A8H         PUBLIC        IEN0
+  C:0094H         PUBLIC        _hal_adc_set_power_down_delay
+  D:00B8H         PUBLIC        IEN1
+  C:00E0H         PUBLIC        _hal_adc_set_data_just
+  C:00D2H         PUBLIC        _hal_adc_set_conversion_mode
+  C:00C3H         PUBLIC        _hal_adc_set_resolution
+  D:0088H         PUBLIC        TCON
+  C:0050H         PUBLIC        _hal_adc_set_sampling_rate
+  C:0040H         PUBLIC        _hal_adc_set_input_channel
+  C:011EH         PUBLIC        hal_adc_get_overflow_status
+  C:0106H         PUBLIC        hal_adc_start
+  D:00D3H         PUBLIC        ADCCON1
+  D:00D2H         PUBLIC        ADCCON2
+  D:00D1H         PUBLIC        ADCCON3
+  D:0098H         PUBLIC        S0CON
+  C:00A4H         PUBLIC        hal_adc_busy
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  D:00D4H         PUBLIC        ADCDATH
+  D:00D5H         PUBLIC        ADCDATL
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  -------         PROC          _HAL_ADC_SET_INPUT_CHANNEL
+  D:0007H         SYMBOL        chsel
+  C:0040H         LINE#         26
+  C:0040H         LINE#         27
+  C:0040H         LINE#         28
+  C:004FH         LINE#         29
+  -------         ENDPROC       _HAL_ADC_SET_INPUT_CHANNEL
+  -------         PROC          _HAL_ADC_SET_REFERENCE
+  D:0007H         SYMBOL        refsel
+  C:00EEH         LINE#         32
+  C:00EEH         LINE#         33
+  C:00EEH         LINE#         34
+  C:00F9H         LINE#         35
+  -------         ENDPROC       _HAL_ADC_SET_REFERENCE
+  -------         PROC          _HAL_ADC_SET_INPUT_MODE
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:29  PAGE 4
+
+
+  D:0007H         SYMBOL        input_mode
+  C:00B4H         LINE#         38
+  C:00B4H         LINE#         39
+  C:00B4H         LINE#         40
+  C:00C2H         LINE#         41
+  -------         ENDPROC       _HAL_ADC_SET_INPUT_MODE
+  -------         PROC          _HAL_ADC_SET_CONVERSION_MODE
+  D:0007H         SYMBOL        conv_mode
+  C:00D2H         LINE#         44
+  C:00D2H         LINE#         45
+  C:00D2H         LINE#         46
+  C:00DFH         LINE#         47
+  -------         ENDPROC       _HAL_ADC_SET_CONVERSION_MODE
+  -------         PROC          _HAL_ADC_SET_SAMPLING_RATE
+  D:0007H         SYMBOL        rate
+  C:0050H         LINE#         50
+  C:0050H         LINE#         51
+  C:0050H         LINE#         52
+  C:005FH         LINE#         53
+  -------         ENDPROC       _HAL_ADC_SET_SAMPLING_RATE
+  -------         PROC          _HAL_ADC_SET_POWER_DOWN_DELAY
+  D:0007H         SYMBOL        pdd
+  C:0094H         LINE#         56
+  C:0094H         LINE#         57
+  C:0094H         LINE#         58
+  C:00A3H         LINE#         59
+  -------         ENDPROC       _HAL_ADC_SET_POWER_DOWN_DELAY
+  -------         PROC          _HAL_ADC_SET_ACQ_WINDOW
+  D:0007H         SYMBOL        tacq
+  C:00FAH         LINE#         62
+  C:00FAH         LINE#         63
+  C:00FAH         LINE#         64
+  C:0105H         LINE#         65
+  -------         ENDPROC       _HAL_ADC_SET_ACQ_WINDOW
+  -------         PROC          _HAL_ADC_SET_RESOLUTION
+  D:0007H         SYMBOL        res
+  C:00C3H         LINE#         68
+  C:00C3H         LINE#         69
+  C:00C3H         LINE#         70
+  C:00D1H         LINE#         71
+  -------         ENDPROC       _HAL_ADC_SET_RESOLUTION
+  -------         PROC          _HAL_ADC_SET_DATA_JUST
+  D:0007H         SYMBOL        just
+  C:00E0H         LINE#         74
+  C:00E0H         LINE#         75
+  C:00E0H         LINE#         76
+  C:00EDH         LINE#         77
+  -------         ENDPROC       _HAL_ADC_SET_DATA_JUST
+  -------         PROC          HAL_ADC_START
+  -------         DO            
+  D:0007H         SYMBOL        cnt
+  -------         ENDDO         
+  C:0106H         LINE#         80
+  C:0106H         LINE#         81
+  C:0106H         LINE#         82
+  C:0108H         LINE#         83
+  C:010BH         LINE#         85
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:29  PAGE 5
+
+
+  C:0111H         LINE#         86
+  -------         ENDPROC       HAL_ADC_START
+  -------         PROC          HAL_ADC_READ_LSB
+  C:0060H         LINE#         89
+  C:0060H         LINE#         90
+  C:0060H         LINE#         91
+  C:0062H         LINE#         92
+  -------         ENDPROC       HAL_ADC_READ_LSB
+  -------         PROC          HAL_ADC_READ_MSB
+  C:0129H         LINE#         94
+  C:0129H         LINE#         95
+  C:0129H         LINE#         96
+  C:012BH         LINE#         97
+  -------         ENDPROC       HAL_ADC_READ_MSB
+  -------         PROC          HAL_ADC_BUSY
+  C:00A4H         LINE#         99
+  C:00A4H         LINE#         100
+  C:00A4H         LINE#         101
+  C:00B3H         LINE#         102
+  -------         ENDPROC       HAL_ADC_BUSY
+  -------         PROC          HAL_ADC_GET_OVERFLOW_STATUS
+  C:011EH         LINE#         104
+  C:011EH         LINE#         105
+  C:011EH         LINE#         106
+  C:0128H         LINE#         107
+  -------         ENDPROC       HAL_ADC_GET_OVERFLOW_STATUS
+  -------         ENDMOD        HAL_ADC
+
+Program Size: data=9.0 xdata=0 code=300
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

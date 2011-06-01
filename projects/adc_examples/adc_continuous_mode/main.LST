@@ -1,0 +1,85 @@
+C51 COMPILER V8.18   MAIN                                                                  01/12/2010 14:00:28 PAGE 1   
+
+
+C51 COMPILER V8.18, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE INCDIR(..\..\..\hal\nrf24le1;..\..\..\hal) DEBUG OBJECTEXTEND
+                    - TABS(2)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5718 $
+  12           */
+  13          
+  14          /** @file
+  15           * @brief ADC continuous mode example
+  16           * @defgroup adc_cont_example ADC continuous mode example
+  17           * @{
+  18           * @ingroup nrf_examples
+  19           *
+  20           * @brief This example samples P00 using ADC continuous mode a rate of 2 Ksps 
+  21           * and outputs the 8 bit sample value on P1.
+  22           *
+  23          */
+  24          
+  25          #include <Nordic\reg24le1.h>
+  26          #include <stdint.h>
+  27          #include "hal_adc.h"
+  28          
+  29          void main()
+  30          {
+  31   1        // Set P1 as output
+  32   1        P1DIR = 0;                                   
+  33   1      
+  34   1        // Configure ADC
+  35   1        hal_adc_set_input_channel(HAL_ADC_INP_AIN0);    
+  36   1        hal_adc_set_reference(HAL_ADC_REF_VDD);         
+  37   1        hal_adc_set_input_mode(HAL_ADC_SINGLE);         
+  38   1        hal_adc_set_conversion_mode(HAL_ADC_CONTINOUS); 
+  39   1        hal_adc_set_sampling_rate(HAL_ADC_2KSPS);       
+  40   1        hal_adc_set_resolution(HAL_ADC_RES_8BIT);       
+  41   1        hal_adc_set_data_just(HAL_ADC_JUST_RIGHT);    
+  42   1        
+  43   1        // Enable MISC interrupts to enable ADC interrupt
+  44   1        MISC = 1;
+  45   1        // Enable global interrupts
+  46   1        EA = 1;                                         
+  47   1        // Start ADC conversion
+  48   1        hal_adc_start();
+  49   1        
+  50   1        while(1)
+  51   1        ;                                             
+  52   1      } 
+  53          
+  54          // ADC (MISC) interrupt
+C51 COMPILER V8.18   MAIN                                                                  01/12/2010 14:00:28 PAGE 2   
+
+  55          void adc_irq() interrupt INTERRUPT_MISCIRQ
+  56          {
+  57   1        // Write sample value to P0
+  58   1        P1 = hal_adc_read_LSB();
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    107    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

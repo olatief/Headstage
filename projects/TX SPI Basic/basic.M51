@@ -1,0 +1,508 @@
+BL51 BANKED LINKER/LOCATER V6.11                                                        02/22/2011  12:45:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.11, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, main.obj, .\hal_nrf_hw.obj, .\hal_spi.obj TO basic RAMSIZE (256) XDATA (0X0000-0X0
+>> 3FF)
+
+
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  .\hal_nrf_hw.obj (HAL_NRF_HW)
+  .\hal_spi.obj (HAL_SPI)
+  C:\KEIL\C51\LIB\C51L.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  basic (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MAIN
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0003H     UNIT         ?XD?HAL_SPI
+            XDATA   0003H     0001H     UNIT         ?XD?_HAL_SPI_SLAVE_INIT?HAL_SPI
+            XDATA   0004H     0001H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0048H     UNIT         ?PR?_HAL_SPI_SLAVE_INIT?HAL_SPI
+            CODE    004BH     0003H     ABSOLUTE     
+            CODE    004EH     0003H     UNIT         ?PR?_HAL_SPI_SLAVE_PRELOAD?HAL_SPI
+                    0051H     0002H                  *** GAP ***
+            CODE    0053H     0003H     ABSOLUTE     
+            CODE    0056H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00E2H     0052H     UNIT         ?PR?_HAL_SPI_MASTER_INIT?HAL_SPI
+            CODE    0134H     004CH     UNIT         ?PR?RF_IRQ?MAIN
+            CODE    0180H     0047H     UNIT         ?PR?MAIN?MAIN
+            CODE    01C7H     002FH     UNIT         ?PR?HAL_SPI_SLAVE_CSN_HIGH?HAL_SPI
+            CODE    01F6H     0016H     UNIT         ?PR?HAL_SPI_SLAVE_READ?HAL_SPI
+            CODE    020CH     0011H     UNIT         ?PR?SPI_SLAVE_DATA_READY?HAL_SPI
+            CODE    021DH     0010H     UNIT         ?C_INITSEG
+            CODE    022DH     000EH     UNIT         ?PR?SLAVE_SP?MAIN
+            CODE    023BH     000AH     UNIT         ?PR?_HAL_NRF_RW?HAL_NRF_HW
+            CODE    0245H     000AH     UNIT         ?PR?_HAL_SPI_MASTER_READ_WRITE?HAL_SPI
+            CODE    024FH     0007H     UNIT         ?PR?_HAL_SPI_SLAVE_RW?HAL_SPI
+
+
+
+OVERLAY MAP OF MODULE:   basic (?C_STARTUP)
+
+
+SEGMENT                                          XDATA_GROUP
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 2
+
+
+  +--> CALLED SEGMENT                          START    LENGTH
+--------------------------------------------------------------
+?C_C51STARTUP                                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                                  0004H    0001H
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   HAL_NRF_FLUSH_TX
+   HAL_NRF_GET_CLEAR_IRQ_FLAGS
+   _HAL_NRF_SET_POWER_MODE
+   _HAL_NRF_WRITE_TX_PAYLOAD
+
+
+
+SYMBOL TABLE OF MODULE:  basic (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0056H         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0059H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0056H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0056H         LINE#         133
+  C:0058H         LINE#         134
+  C:0059H         LINE#         135
+  C:005AH         LINE#         136
+  C:005CH         LINE#         185
+  C:005FH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 3
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0134H         PUBLIC        rf_irq
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  B:0080H.0       PUBLIC        P0_0
+  B:00C8H.6       PUBLIC        I3FR
+  D:00BFH         PUBLIC        SPISDAT
+  B:00E8H.0       PUBLIC        RFCE
+  C:0180H         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+  D:0008H         PUBLIC        radio_busy
+  D:0009H         PUBLIC        temp
+  D:000AH         PUBLIC        blockNeedsSending
+  D:00BCH         PUBLIC        SPISCON0
+  D:00A6H         PUBLIC        INTEXP
+  D:0093H         PUBLIC        P0DIR
+  C:022DH         PUBLIC        slave_sp
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  B:00B8H.2       PUBLIC        SPI
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  -------         PROC          MAIN
+  -------         DO            
+  X:0004H         SYMBOL        count
+  -------         ENDDO         
+  C:0180H         LINE#         21
+  C:0180H         LINE#         22
+  C:0180H         LINE#         24
+  C:0183H         LINE#         26
+  C:0186H         LINE#         27
+  C:0188H         LINE#         28
+  C:018AH         LINE#         29
+  C:018DH         LINE#         34
+  C:0190H         LINE#         35
+  C:0193H         LINE#         36
+  C:0195H         LINE#         38
+  C:0198H         LINE#         46
+  C:019AH         LINE#         48
+  C:019FH         LINE#         50
+  C:019FH         LINE#         51
+  C:019FH         LINE#         52
+  C:01A3H         LINE#         53
+  C:01AEH         LINE#         56
+  C:01C2H         LINE#         58
+  C:01C5H         LINE#         59
+  -------         ENDPROC       MAIN
+  -------         PROC          SLAVE_SP
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 4
+
+
+  C:022DH         LINE#         62
+  C:022DH         LINE#         65
+  C:022FH         LINE#         67
+  C:0232H         LINE#         68
+  C:0235H         LINE#         69
+  C:0236H         LINE#         70
+  C:0237H         LINE#         71
+  C:0238H         LINE#         72
+  C:023AH         LINE#         73
+  -------         ENDPROC       SLAVE_SP
+  -------         PROC          RF_IRQ
+  -------         DO            
+  D:0007H         SYMBOL        irq_flags
+  -------         ENDDO         
+  C:0134H         LINE#         75
+  C:0151H         LINE#         80
+  C:0154H         LINE#         82
+  C:015DH         LINE#         83
+  C:015DH         LINE#         85
+  C:015DH         LINE#         86
+  C:015DH         LINE#         88
+  C:015FH         LINE#         90
+  C:015FH         LINE#         95
+  C:0162H         LINE#         96
+  C:0165H         LINE#         97
+  C:0165H         LINE#         98
+  C:0165H         LINE#         101
+  -------         ENDPROC       RF_IRQ
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        HAL_NRF_HW
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  D:00E7H         PUBLIC        SPIRDAT
+  C:023BH         PUBLIC        _hal_nrf_rw
+  D:0088H         PUBLIC        TCON
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  D:00E6H         PUBLIC        SPIRSTAT
+  -------         PROC          _HAL_NRF_RW
+  D:0007H         SYMBOL        value
+  C:023BH         LINE#         25
+  C:023BH         LINE#         26
+  C:023BH         LINE#         27
+  C:023DH         LINE#         29
+  C:0242H         LINE#         31
+  C:0244H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 5
+
+
+  -------         ENDPROC       _HAL_NRF_RW
+  -------         ENDMOD        HAL_NRF_HW
+
+  -------         MODULE        HAL_SPI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00BEH         PUBLIC        SPISSTAT
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01C7H         PUBLIC        hal_spi_slave_csn_high
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  B:00C8H.6       PUBLIC        I3FR
+  D:00FFH         PUBLIC        SPIMDAT
+  D:00BFH         PUBLIC        SPISDAT
+  X:0002H         PUBLIC        sstat_shadow
+  C:024FH         PUBLIC        _hal_spi_slave_rw
+  C:004EH         PUBLIC        _hal_spi_slave_preload
+  D:0088H         PUBLIC        TCON
+  C:020CH         PUBLIC        spi_slave_data_ready
+  D:00FCH         PUBLIC        SPIMCON0
+  D:00BCH         PUBLIC        SPISCON0
+  D:00A6H         PUBLIC        INTEXP
+  C:01F6H         PUBLIC        hal_spi_slave_read
+  C:0245H         PUBLIC        _hal_spi_master_read_write
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  C:00E2H         PUBLIC        _hal_spi_master_init
+  D:00FEH         PUBLIC        SPIMSTAT
+  D:00E8H         PUBLIC        RFCON
+  C:0003H         PUBLIC        _hal_spi_slave_init
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  -------         PROC          _HAL_SPI_MASTER_INIT
+  D:0007H         SYMBOL        ck
+  D:0005H         SYMBOL        mode
+  D:0003H         SYMBOL        bo
+  C:00E2H         LINE#         22
+  C:00E2H         LINE#         23
+  C:00E2H         LINE#         24
+  C:00E5H         LINE#         25
+  C:00F6H         LINE#         26
+  C:00F6H         LINE#         27
+  C:00F6H         LINE#         28
+  C:00F6H         LINE#         29
+  C:00F8H         LINE#         30
+  C:00F8H         LINE#         31
+  C:00FBH         LINE#         32
+  C:00FDH         LINE#         33
+  C:00FDH         LINE#         34
+  C:0100H         LINE#         35
+  C:0102H         LINE#         36
+  C:0102H         LINE#         37
+  C:0105H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 6
+
+
+  C:0107H         LINE#         39
+  C:0107H         LINE#         40
+  C:010AH         LINE#         41
+  C:010CH         LINE#         42
+  C:010CH         LINE#         43
+  C:010CH         LINE#         44
+  C:010FH         LINE#         45
+  C:010FH         LINE#         46
+  C:010FH         LINE#         47
+  C:011BH         LINE#         48
+  C:011BH         LINE#         49
+  C:011BH         LINE#         50
+  C:011BH         LINE#         51
+  C:011DH         LINE#         52
+  C:011DH         LINE#         53
+  C:0120H         LINE#         54
+  C:0122H         LINE#         55
+  C:0122H         LINE#         56
+  C:0125H         LINE#         57
+  C:0127H         LINE#         58
+  C:0127H         LINE#         59
+  C:012AH         LINE#         60
+  C:012AH         LINE#         61
+  C:012AH         LINE#         63
+  C:012DH         LINE#         64
+  C:012DH         LINE#         65
+  C:0130H         LINE#         66
+  C:0130H         LINE#         68
+  C:0133H         LINE#         69
+  -------         ENDPROC       _HAL_SPI_MASTER_INIT
+  -------         PROC          _HAL_SPI_MASTER_READ_WRITE
+  D:0007H         SYMBOL        pLoad
+  C:0245H         LINE#         71
+  C:0245H         LINE#         72
+  C:0245H         LINE#         73
+  C:0247H         LINE#         74
+  C:024CH         LINE#         76
+  C:024EH         LINE#         77
+  -------         ENDPROC       _HAL_SPI_MASTER_READ_WRITE
+  -------         PROC          _HAL_SPI_SLAVE_INIT
+  D:0007H         SYMBOL        mode
+  D:0005H         SYMBOL        byte_order
+  -------         DO            
+  X:0003H         SYMBOL        temp
+  -------         ENDDO         
+  C:0003H         LINE#         79
+  C:0003H         LINE#         80
+  C:0003H         LINE#         82
+  C:0006H         LINE#         83
+  C:0008H         LINE#         84
+  C:000BH         LINE#         85
+  C:000EH         LINE#         88
+  C:001AH         LINE#         89
+  C:001AH         LINE#         90
+  C:001AH         LINE#         91
+  C:001AH         LINE#         92
+  C:001CH         LINE#         93
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 7
+
+
+  C:001CH         LINE#         94
+  C:001FH         LINE#         95
+  C:0021H         LINE#         96
+  C:0021H         LINE#         97
+  C:0024H         LINE#         98
+  C:0026H         LINE#         99
+  C:0026H         LINE#         100
+  C:0029H         LINE#         101
+  C:0029H         LINE#         102
+  C:0029H         LINE#         103
+  C:0034H         LINE#         105
+  C:0037H         LINE#         106
+  C:003AH         LINE#         109
+  C:003DH         LINE#         110
+  C:0042H         LINE#         111
+  C:004AH         LINE#         112
+  -------         ENDPROC       _HAL_SPI_SLAVE_INIT
+  -------         PROC          _HAL_SPI_SLAVE_RW
+  D:0007H         SYMBOL        pLoad
+  C:024FH         LINE#         114
+  C:024FH         LINE#         115
+  C:024FH         LINE#         116
+  C:0252H         LINE#         117
+  C:0255H         LINE#         119
+  -------         ENDPROC       _HAL_SPI_SLAVE_RW
+  -------         PROC          HAL_SPI_SLAVE_CSN_HIGH
+  -------         DO            
+  X:0000H         SYMBOL        csn_high
+  -------         ENDDO         
+  C:01C7H         LINE#         123
+  C:01C7H         LINE#         124
+  C:01C7H         LINE#         126
+  C:01CEH         LINE#         128
+  C:01D3H         LINE#         129
+  C:01D3H         LINE#         130
+  C:01DBH         LINE#         131
+  C:01DDH         LINE#         133
+  C:01DDH         LINE#         134
+  C:01E1H         LINE#         135
+  C:01E1H         LINE#         136
+  C:01E8H         LINE#         137
+  C:01E8H         LINE#         138
+  C:01E8H         LINE#         139
+  C:01EFH         LINE#         141
+  C:01F5H         LINE#         142
+  -------         ENDPROC       HAL_SPI_SLAVE_CSN_HIGH
+  -------         PROC          SPI_SLAVE_DATA_READY
+  C:020CH         LINE#         144
+  C:020CH         LINE#         145
+  C:020CH         LINE#         146
+  C:0213H         LINE#         148
+  C:0217H         LINE#         149
+  C:0217H         LINE#         150
+  C:021AH         LINE#         151
+  C:021AH         LINE#         153
+  C:021AH         LINE#         154
+  C:021CH         LINE#         155
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 8
+
+
+  C:021CH         LINE#         156
+  -------         ENDPROC       SPI_SLAVE_DATA_READY
+  -------         PROC          HAL_SPI_SLAVE_READ
+  C:01F6H         LINE#         158
+  C:01F6H         LINE#         159
+  C:01F6H         LINE#         160
+  C:01FDH         LINE#         161
+  C:01FDH         LINE#         162
+  C:0200H         LINE#         163
+  C:0202H         LINE#         164
+  C:0209H         LINE#         166
+  C:020BH         LINE#         167
+  -------         ENDPROC       HAL_SPI_SLAVE_READ
+  -------         PROC          _HAL_SPI_SLAVE_PRELOAD
+  D:0007H         SYMBOL        pLoad
+  C:004EH         LINE#         169
+  C:004EH         LINE#         170
+  C:004EH         LINE#         171
+  C:0050H         LINE#         172
+  -------         ENDPROC       _HAL_SPI_SLAVE_PRELOAD
+  -------         ENDMOD        HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_HAL_NRF_RW?HAL_NRF_HW
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_HAL_SPI_MASTER_INIT?HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_HAL_SPI_MASTER_READ_WRITE?HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_HAL_SPI_SLAVE_INIT?HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_HAL_SPI_SLAVE_RW?HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?HAL_SPI_SLAVE_CSN_HIGH?HAL_SPI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SPI_SLAVE_DATA_READY?HAL_SPI
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _HAL_NRF_WRITE_TX_PAYLOAD
+    MODULE:  main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  HAL_NRF_GET_CLEAR_IRQ_FLAGS
+    MODULE:  main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _HAL_NRF_SET_POWER_MODE
+    MODULE:  main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  HAL_NRF_FLUSH_TX
+BL51 BANKED LINKER/LOCATER V6.11                                                      02/22/2011  12:45:34  PAGE 9
+
+
+    MODULE:  main.obj (MAIN)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _HAL_NRF_SET_POWER_MODE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 019DH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _HAL_NRF_WRITE_TX_PAYLOAD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 01ACH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  HAL_NRF_GET_CLEAR_IRQ_FLAGS
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0152H
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  HAL_NRF_FLUSH_TX
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0160H
+
+Program Size: data=12.0 xdata=5 code=596
+LINK/LOCATE RUN COMPLETE.  15 WARNING(S),  0 ERROR(S)

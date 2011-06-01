@@ -1,0 +1,12 @@
+"STARTUP.obj",
+"main.obj",
+".\hal_usb.obj",
+"usb_desc_bulk.obj",
+".\hal_nrf.obj",
+".\hal_nrf_hw.obj",
+".\cklf.obj",
+".\cpu.obj" 
+TO "usb_rx" 
+RAMSIZE(256) 
+DISABLEWARNING (15, 16) 
+XDATA( 0X8000-0X87FF )

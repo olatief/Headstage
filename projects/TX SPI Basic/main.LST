@@ -1,0 +1,127 @@
+C51 COMPILER V8.12   MAIN                                                                  02/22/2011 12:45:33 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c LARGE BROWSE INCDIR(..\..\compiler\c51;..\..\hal\nrf24le1;..\..\hal;
+                    -..\..\hal\nrf24l01p) DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg24le1.h>
+   2          #include <intrins.h>
+   3          #include <stdint.h>
+   4          
+   5          #include "nordic_common.h"  
+   6          
+   7          #include "hal_nrf.h"
+   8          #include "hal_nrf_hw.h"
+   9          #include "hal_spi.h"
+  10          
+  11            sbit P0_0 = P0^0;
+  12            sbit P0_4 = P0^4;
+  13            sbit P0_5 = P0^5;
+  14            sbit P0_6 = P0^6;
+  15            sbit P0_7 = P0^7;
+  16          
+  17                  data uint8_t blockNeedsSending = 0;
+  18                  data uint8_t temp = 0; 
+  19                  data bool radio_busy;
+  20          
+  21          void main()
+  22          {
+  23   1      
+  24   1              P0DIR =  ~((1<<4)|(1<<0));
+  25   1              // hal_spi_slave_init( HAL_SPI_MODE_0, HAL_SPI_LSB_MSB);
+  26   1               SPISCON0 = 0x40;
+  27   1                I3FR = 1;             // rising edge SPI ready detect
+  28   1        P0_0 = 0;
+  29   1        INTEXP = 0x01; //Slave SPI Interrupt
+  30   1      
+  31   1        //  ET0 = 1; // enable timer interrupt
+  32   1        // EX0 = 1; 
+  33   1      
+  34   1              SPISDAT = 0xAA;
+  35   1              SPISDAT = 0xAA;
+  36   1              SPI = 1; // Enable SPI Interrupt
+  37   1              
+  38   1              SPISCON0 |= 0x01;
+  39   1      
+  40   1                  // Enable the radio clock
+  41   1      //  RFCKEN = 1;
+  42   1              // Enable RF interrupt
+  43   1      //      RF = 1; 
+  44   1      
+  45   1              // Enable global interrupt
+  46   1              EA = 1;
+  47   1              // Power up radio
+  48   1              hal_nrf_set_power_mode(HAL_NRF_PWR_UP);
+  49   1      
+  50   1              while(1)
+  51   1              {
+  52   2                      while(radio_busy);
+  53   2                  hal_nrf_write_tx_payload('a', 1);
+  54   2                              
+C51 COMPILER V8.12   MAIN                                                                  02/22/2011 12:45:33 PAGE 2   
+
+  55   2                  // Toggle radio CE signal to start transmission 
+  56   2                  CE_PULSE();                           
+  57   2                      
+  58   2                  radio_busy = true;
+  59   2              }
+  60   1      }
+  61          
+  62                  void slave_sp() interrupt INTERRUPT_SERIAL // SPI interrupt??
+  63                  {
+  64   1                      
+  65   1                      P0_0 = 1;
+  66   1      
+  67   1                      temp = SPISDAT;
+  68   1                      SPISDAT = 0xCC;
+  69   1                      _nop_();
+  70   1                      _nop_();
+  71   1                      _nop_();
+  72   1                      P0_0 = 0;       
+  73   1              }       
+  74                  // Radio interrupt
+  75          void rf_irq() interrupt INTERRUPT_RFIRQ
+  76          {
+  77   1        uint8_t irq_flags;
+  78   1       //  P0_0 = 1;
+  79   1        // Read and clear IRQ flags from radio
+  80   1        irq_flags = hal_nrf_get_clear_irq_flags(); 
+  81   1      
+  82   1        switch(irq_flags)
+  83   1        {
+  84   2          // Transmission success
+  85   2          case (1 << HAL_NRF_TX_DS):
+  86   2            radio_busy = false;
+  87   2            // Data has been sent
+  88   2            break;
+  89   2          // Transmission failed (maximum re-transmits)
+  90   2          case (1 << HAL_NRF_MAX_RT):
+  91   2            // When a MAX_RT interrupt occurs the TX payload will not be removed from the TX FIFO. 
+  92   2            // If the packet is to be discarded this must be done manually by flushing the TX FIFO.
+  93   2            // Alternatively, CE_PULSE() can be called re-starting transmission of the payload.
+  94   2            // (Will only be possible after the radio irq flags are cleared) 
+  95   2            hal_nrf_flush_tx();
+  96   2            radio_busy = false;
+  97   2            break;
+  98   2        }
+  99   1      
+ 100   1      //  P0_0 = 0;
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    161    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,1116 @@
+BL51 BANKED LINKER/LOCATER V6.20                                                        01/12/2010  14:00:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj, .\hal_nrf_hw.obj, .\hal_nrf.obj TO enhanced_shockburst_prx_le1 RAMSIZE (256) DISABLEW
+>> ARNING (15, 16)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  .\hal_nrf_hw.obj (HAL_NRF_HW)
+  .\hal_nrf.obj (HAL_NRF)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  enhanced_shockburst_prx_le1 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            DATA    0012H     0005H     UNIT         ?DT?_HAL_NRF_GET_PIPE_STATUS?HAL_NRF
+            DATA    0017H     0005H     UNIT         ?DT?_HAL_NRF_WRITE_ACK_PAYLOAD?HAL_NRF
+            DATA    001CH     0005H     UNIT         ?DT?_HAL_NRF_WRITE_MULTIBYTE_REG?HAL_NRF
+            DATA    0021H     0004H     UNIT         ?DT?_HAL_NRF_OPEN_PIPE?HAL_NRF
+            DATA    0025H     0004H     UNIT         ?DT?_HAL_NRF_SET_ADDRESS?HAL_NRF
+            DATA    0029H     0004H     UNIT         ?DT?_HAL_NRF_GET_ADDRESS?HAL_NRF
+            DATA    002DH     0003H     UNIT         ?DT?MAIN
+            DATA    0030H     0003H     UNIT         ?DT?_HAL_NRF_SET_IRQ_MODE?HAL_NRF
+            DATA    0033H     0003H     UNIT         ?DT?_HAL_NRF_CLOSE_PIPE?HAL_NRF
+            DATA    0036H     0002H     UNIT         ?DT?_HAL_NRF_SET_CRC_MODE?HAL_NRF
+            DATA    0038H     0002H     UNIT         ?DT?_HAL_NRF_SET_OUTPUT_POWER?HAL_NRF
+            DATA    003AH     0002H     UNIT         ?DT?_HAL_NRF_SET_DATARATE?HAL_NRF
+            DATA    003CH     0002H     UNIT         ?DT?_HAL_NRF_ENABLE_DYNAMIC_PAYLOAD?HAL_NRF
+            DATA    003EH     0002H     UNIT         ?DT?_HAL_NRF_ENABLE_ACK_PAYLOAD?HAL_NRF
+            DATA    0040H     0002H     UNIT         ?DT?_HAL_NRF_ENABLE_DYNAMIC_ACK?HAL_NRF
+            DATA    0042H     0002H     UNIT         ?DT?_HAL_NRF_SET_PLL_MODE?HAL_NRF
+            DATA    0044H     0002H     UNIT         ?DT?_HAL_NRF_ENABLE_CONTINIOUS_WAVE?HAL_NRF
+            DATA    0046H     0001H     UNIT         ?DT?_HAL_NRF_SET_AUTO_RETR?HAL_NRF
+            DATA    0047H     0001H     UNIT         ?DT?_HAL_NRF_SET_ADDRESS_WIDTH?HAL_NRF
+            DATA    0048H     0001H     UNIT         ?DT?_HAL_NRF_GET_RX_PAYLOAD_WIDTH?HAL_NRF
+            DATA    0049H     0001H     UNIT         ?DT?_HAL_NRF_SET_RF_CHANNEL?HAL_NRF
+            DATA    004AH     0001H     UNIT         ?DT?_HAL_NRF_SETUP_DYNAMIC_PAYLOAD?HAL_NRF
+            IDATA   004BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0043H     UNIT         ?PR?_HAL_NRF_SET_CRC_MODE?HAL_NRF
+            CODE    0046H     0001H     UNIT         ?PR?HAL_NRF_ACTIVATE_FEATURES?HAL_NRF
+                    0047H     0004H                  *** GAP ***
+            CODE    004BH     0003H     ABSOLUTE     
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 2
+
+
+            CODE    004EH     00ADH     UNIT         ?C?LIB_CODE
+            CODE    00FBH     0092H     UNIT         ?PR?_HAL_NRF_GET_PIPE_STATUS?HAL_NRF
+            CODE    018DH     0072H     UNIT         ?PR?_HAL_NRF_READ_MULTIBYTE_REG?HAL_NRF
+            CODE    01FFH     006BH     UNIT         ?PR?_HAL_NRF_SET_IRQ_MODE?HAL_NRF
+            CODE    026AH     005AH     UNIT         ?PR?_HAL_NRF_OPEN_PIPE?HAL_NRF
+            CODE    02C4H     0052H     UNIT         ?PR?RF_IRQ?MAIN
+            CODE    0316H     0043H     UNIT         ?PR?_HAL_NRF_CLOSE_PIPE?HAL_NRF
+            CODE    0359H     003DH     UNIT         ?PR?_HAL_NRF_SET_ADDRESS?HAL_NRF
+            CODE    0396H     003DH     UNIT         ?PR?_HAL_NRF_SET_DATARATE?HAL_NRF
+            CODE    03D3H     0037H     UNIT         ?PR?_HAL_NRF_GET_RX_PAYLOAD_WIDTH?HAL_NRF
+            CODE    040AH     0037H     UNIT         ?PR?_HAL_NRF_WRITE_MULTIBYTE_REG?HAL_NRF
+            CODE    0441H     0035H     UNIT         ?PR?_HAL_NRF_GET_ADDRESS?HAL_NRF
+            CODE    0476H     0030H     UNIT         ?PR?_HAL_NRF_SET_AUTO_RETR?HAL_NRF
+            CODE    04A6H     002CH     UNIT         ?PR?_HAL_NRF_ENABLE_CONTINIOUS_WAVE?HAL_NRF
+            CODE    04D2H     002AH     UNIT         ?PR?_HAL_NRF_ENABLE_DYNAMIC_PAYLOAD?HAL_NRF
+            CODE    04FCH     0029H     UNIT         ?PR?_HAL_NRF_SET_PLL_MODE?HAL_NRF
+            CODE    0525H     0028H     UNIT         ?PR?_HAL_NRF_ENABLE_ACK_PAYLOAD?HAL_NRF
+            CODE    054DH     0026H     UNIT         ?PR?_HAL_NRF_ENABLE_DYNAMIC_ACK?HAL_NRF
+            CODE    0573H     0023H     UNIT         ?PR?_HAL_NRF_SET_OPERATION_MODE?HAL_NRF
+            CODE    0596H     0023H     UNIT         ?PR?_HAL_NRF_SET_POWER_MODE?HAL_NRF
+            CODE    05B9H     001FH     UNIT         ?PR?_HAL_NRF_SET_OUTPUT_POWER?HAL_NRF
+            CODE    05D8H     001EH     UNIT         ?PR?MAIN?MAIN
+            CODE    05F6H     0017H     UNIT         ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+            CODE    060DH     0015H     UNIT         ?PR?_HAL_NRF_SET_ADDRESS_WIDTH?HAL_NRF
+            CODE    0622H     0013H     UNIT         ?PR?_HAL_NRF_SET_RF_CHANNEL?HAL_NRF
+            CODE    0635H     0011H     UNIT         ?PR?_HAL_NRF_CLEAR_IRQ_FLAG?HAL_NRF
+            CODE    0646H     000DH     UNIT         ?PR?HAL_NRF_GET_PACKET_LOST_CTR?HAL_NRF
+            CODE    0653H     000DH     UNIT         ?PR?HAL_NRF_GET_TX_FIFO_STATUS?HAL_NRF
+            CODE    0660H     000DH     UNIT         ?PR?HAL_NRF_GET_REUSE_TX_STATUS?HAL_NRF
+            CODE    066DH     000DH     UNIT         ?PR?_HAL_NRF_READ_REG?HAL_NRF
+            CODE    067AH     000CH     UNIT         ?PR?HAL_NRF_GET_CLEAR_IRQ_FLAGS?HAL_NRF
+            CODE    0686H     000CH     UNIT         ?PR?HAL_NRF_RX_FIFO_FULL?HAL_NRF
+            CODE    0692H     000CH     UNIT         ?PR?HAL_NRF_TX_FIFO_FULL?HAL_NRF
+            CODE    069EH     000CH     UNIT         ?PR?_HAL_NRF_SETUP_DYNAMIC_PAYLOAD?HAL_NRF
+            CODE    06AAH     000CH     UNIT         ?C_C51STARTUP
+            CODE    06B6H     000BH     UNIT         ?PR?HAL_NRF_TX_FIFO_EMPTY?HAL_NRF
+            CODE    06C1H     000AH     UNIT         ?PR?_HAL_NRF_RW?HAL_NRF_HW
+            CODE    06CBH     000AH     UNIT         ?PR?HAL_NRF_GET_ADDRESS_WIDTH?HAL_NRF
+            CODE    06D5H     000AH     UNIT         ?PR?HAL_NRF_RX_FIFO_EMPTY?HAL_NRF
+            CODE    06DFH     000AH     UNIT         ?PR?HAL_NRF_GET_RX_FIFO_STATUS?HAL_NRF
+            CODE    06E9H     000AH     UNIT         ?PR?HAL_NRF_GET_TRANSMIT_ATTEMPTS?HAL_NRF
+            CODE    06F3H     000AH     UNIT         ?PR?HAL_NRF_GET_CARRIER_DETECT?HAL_NRF
+            CODE    06FDH     000AH     UNIT         ?PR?_HAL_NRF_WRITE_ACK_PAYLOAD?HAL_NRF
+            CODE    0707H     000AH     UNIT         ?PR?HAL_NRF_GET_RX_DATA_SOURCE?HAL_NRF
+            CODE    0711H     000AH     UNIT         ?PR?HAL_NRF_REUSE_TX?HAL_NRF
+            CODE    071BH     000AH     UNIT         ?PR?HAL_NRF_FLUSH_RX?HAL_NRF
+            CODE    0725H     000AH     UNIT         ?PR?HAL_NRF_FLUSH_TX?HAL_NRF
+            CODE    072FH     000AH     UNIT         ?PR?HAL_NRF_NOP?HAL_NRF
+            CODE    0739H     0008H     UNIT         ?PR?HAL_NRF_GET_IRQ_FLAGS?HAL_NRF
+            CODE    0741H     0007H     UNIT         ?PR?_HAL_NRF_SET_RX_PAYLOAD_WIDTH?HAL_NRF
+            CODE    0748H     0007H     UNIT         ?PR?_HAL_NRF_WRITE_TX_PAYLOAD?HAL_NRF
+            CODE    074FH     0007H     UNIT         ?PR?_HAL_NRF_WRITE_TX_PAYLOAD_NOACK?HAL_NRF
+            CODE    0756H     0006H     UNIT         ?PR?HAL_NRF_GET_AUTO_RETR_STATUS?HAL_NRF
+            CODE    075CH     0006H     UNIT         ?PR?HAL_NRF_GET_FIFO_STATUS?HAL_NRF
+            CODE    0762H     0006H     UNIT         ?PR?HAL_NRF_READ_RX_PAYLOAD_WIDTH?HAL_NRF
+            CODE    0768H     0006H     UNIT         ?PR?_HAL_NRF_READ_RX_PAYLOAD?HAL_NRF
+
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 3
+
+
+
+
+OVERLAY MAP OF MODULE:   enhanced_shockburst_prx_le1 (MAIN)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?PR?RF_IRQ?MAIN                                  -----    -----
+  +--> ?PR?HAL_NRF_GET_CLEAR_IRQ_FLAGS?HAL_NRF
+  +--> ?PR?HAL_NRF_RX_FIFO_EMPTY?HAL_NRF
+  +--> ?PR?_HAL_NRF_READ_RX_PAYLOAD?HAL_NRF
+
+?PR?HAL_NRF_GET_CLEAR_IRQ_FLAGS?HAL_NRF          -----    -----
+  +--> ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+
+?PR?_HAL_NRF_WRITE_REG?HAL_NRF                   0010H    0002H
+  +--> ?PR?_HAL_NRF_RW?HAL_NRF_HW
+
+?PR?HAL_NRF_RX_FIFO_EMPTY?HAL_NRF                -----    -----
+  +--> ?PR?_HAL_NRF_READ_REG?HAL_NRF
+
+?PR?_HAL_NRF_READ_REG?HAL_NRF                    -----    -----
+  +--> ?PR?_HAL_NRF_RW?HAL_NRF_HW
+
+?PR?_HAL_NRF_READ_RX_PAYLOAD?HAL_NRF             -----    -----
+  +--> ?PR?_HAL_NRF_READ_MULTIBYTE_REG?HAL_NRF
+
+?PR?_HAL_NRF_READ_MULTIBYTE_REG?HAL_NRF          0008H    0006H
+  +--> ?PR?HAL_NRF_GET_ADDRESS_WIDTH?HAL_NRF
+  +--> ?PR?HAL_NRF_GET_RX_DATA_SOURCE?HAL_NRF
+  +--> ?PR?HAL_NRF_READ_RX_PAYLOAD_WIDTH?HAL...
+  +--> ?PR?_HAL_NRF_RW?HAL_NRF_HW
+
+?PR?HAL_NRF_GET_ADDRESS_WIDTH?HAL_NRF            -----    -----
+  +--> ?PR?_HAL_NRF_READ_REG?HAL_NRF
+
+?PR?HAL_NRF_GET_RX_DATA_SOURCE?HAL_NRF           -----    -----
+  +--> ?PR?HAL_NRF_NOP?HAL_NRF
+
+?PR?HAL_NRF_NOP?HAL_NRF                          -----    -----
+  +--> ?PR?_HAL_NRF_RW?HAL_NRF_HW
+
+?PR?HAL_NRF_READ_RX_PAYLOAD_WIDTH?HAL...         -----    -----
+  +--> ?PR?_HAL_NRF_READ_REG?HAL_NRF
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                                    -----    -----
+  +--> ?PR?_HAL_NRF_SET_OPERATION_MODE?HAL_NRF
+  +--> ?PR?_HAL_NRF_SET_RX_PAYLOAD_WIDTH?HAL...
+  +--> ?PR?_HAL_NRF_SET_POWER_MODE?HAL_NRF
+
+?PR?_HAL_NRF_SET_OPERATION_MODE?HAL_NRF          000EH    0002H
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 4
+
+
+  +--> ?PR?_HAL_NRF_READ_REG?HAL_NRF
+  +--> ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+
+?PR?_HAL_NRF_SET_RX_PAYLOAD_WIDTH?HAL...         -----    -----
+  +--> ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+
+?PR?_HAL_NRF_SET_POWER_MODE?HAL_NRF              000EH    0002H
+  +--> ?PR?_HAL_NRF_READ_REG?HAL_NRF
+  +--> ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+
+
+
+SYMBOL TABLE OF MODULE:  enhanced_shockburst_prx_le1 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:02C4H         PUBLIC        rf_irq
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  B:00B8H.1       PUBLIC        RF
+  B:00E8H.0       PUBLIC        RFCE
+  C:05D8H         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+  B:00E8H.2       PUBLIC        RFCKEN
+  D:0093H         PUBLIC        P0DIR
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  D:002DH         PUBLIC        payload
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  -------         PROC          MAIN
+  C:05D8H         LINE#         51
+  C:05D8H         LINE#         52
+  C:05D8H         LINE#         59
+  C:05DBH         LINE#         62
+  C:05DDH         LINE#         65
+  C:05DFH         LINE#         67
+  C:05E1H         LINE#         70
+  C:05E6H         LINE#         73
+  C:05EDH         LINE#         76
+  C:05F2H         LINE#         79
+  C:05F4H         LINE#         81
+  C:05F4H         LINE#         82
+  C:05F4H         LINE#         83
+  -------         ENDPROC       MAIN
+  -------         PROC          RF_IRQ
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 5
+
+
+  -------         DO            
+  D:0007H         SYMBOL        irq_flags
+  -------         ENDDO         
+  C:02C4H         LINE#         87
+  C:02E1H         LINE#         92
+  C:02E4H         LINE#         95
+  C:02E8H         LINE#         96
+  C:02E8H         LINE#         98
+  C:02EEH         LINE#         99
+  C:02EEH         LINE#         100
+  C:02F6H         LINE#         101
+  C:02F8H         LINE#         104
+  C:02FBH         LINE#         105
+  C:02FBH         LINE#         106
+  -------         ENDPROC       RF_IRQ
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        HAL_NRF_HW
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IEN0
+  D:00B8H         PUBLIC        IEN1
+  D:00E7H         PUBLIC        SPIRDAT
+  C:06C1H         PUBLIC        _hal_nrf_rw
+  D:0088H         PUBLIC        TCON
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  D:00F8H         PUBLIC        FSR
+  D:00E8H         PUBLIC        RFCON
+  D:00D0H         PUBLIC        PSW
+  D:00C0H         PUBLIC        IRCON
+  D:00E6H         PUBLIC        SPIRSTAT
+  -------         PROC          _HAL_NRF_RW
+  D:0007H         SYMBOL        value
+  C:06C1H         LINE#         25
+  C:06C1H         LINE#         26
+  C:06C1H         LINE#         27
+  C:06C3H         LINE#         29
+  C:06C8H         LINE#         31
+  C:06CAH         LINE#         32
+  -------         ENDPROC       _HAL_NRF_RW
+  -------         ENDMOD        HAL_NRF_HW
+
+  -------         MODULE        HAL_NRF
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0622H         PUBLIC        _hal_nrf_set_rf_channel
+  C:026AH         PUBLIC        _hal_nrf_open_pipe
+  C:054DH         PUBLIC        _hal_nrf_enable_dynamic_ack
+  C:0748H         PUBLIC        _hal_nrf_write_tx_payload
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 6
+
+
+  C:067AH         PUBLIC        hal_nrf_get_clear_irq_flags
+  C:0525H         PUBLIC        _hal_nrf_enable_ack_payload
+  D:00A8H         PUBLIC        IEN0
+  C:05F6H         PUBLIC        _hal_nrf_write_reg
+  C:072FH         PUBLIC        hal_nrf_nop
+  C:069EH         PUBLIC        _hal_nrf_setup_dynamic_payload
+  D:00B8H         PUBLIC        IEN1
+  C:075CH         PUBLIC        hal_nrf_get_fifo_status
+  D:00E7H         PUBLIC        SPIRDAT
+  C:00FBH         PUBLIC        _hal_nrf_get_pipe_status
+  C:03D3H         PUBLIC        _hal_nrf_get_rx_payload_width
+  C:0739H         PUBLIC        hal_nrf_get_irq_flags
+  C:0596H         PUBLIC        _hal_nrf_set_power_mode
+  C:06F3H         PUBLIC        hal_nrf_get_carrier_detect
+  C:0741H         PUBLIC        _hal_nrf_set_rx_payload_width
+  C:0646H         PUBLIC        hal_nrf_get_packet_lost_ctr
+  C:0003H         PUBLIC        _hal_nrf_set_crc_mode
+  C:071BH         PUBLIC        hal_nrf_flush_rx
+  C:0725H         PUBLIC        hal_nrf_flush_tx
+  C:06E9H         PUBLIC        hal_nrf_get_transmit_attempts
+  C:0711H         PUBLIC        hal_nrf_reuse_tx
+  C:05B9H         PUBLIC        _hal_nrf_set_output_power
+  D:0088H         PUBLIC        TCON
+  C:0396H         PUBLIC        _hal_nrf_set_datarate
+  C:04FCH         PUBLIC        _hal_nrf_set_pll_mode
+  C:0707H         PUBLIC        hal_nrf_get_rx_data_source
+  C:01FFH         PUBLIC        _hal_nrf_set_irq_mode
+  C:018DH         PUBLIC        _hal_nrf_read_multibyte_reg
+  C:06D5H         PUBLIC        hal_nrf_rx_fifo_empty
+  C:04D2H         PUBLIC        _hal_nrf_enable_dynamic_payload
+  C:06B6H         PUBLIC        hal_nrf_tx_fifo_empty
+  C:0756H         PUBLIC        hal_nrf_get_auto_retr_status
+  C:0686H         PUBLIC        hal_nrf_rx_fifo_full
+  C:0692H         PUBLIC        hal_nrf_tx_fifo_full
+  C:0476H         PUBLIC        _hal_nrf_set_auto_retr
+  C:0441H         PUBLIC        _hal_nrf_get_address
+  C:0573H         PUBLIC        _hal_nrf_set_operation_mode
+  C:06FDH         PUBLIC        _hal_nrf_write_ack_payload
+  C:06CBH         PUBLIC        hal_nrf_get_address_width
+  C:040AH         PUBLIC        _hal_nrf_write_multibyte_reg
+  C:0359H         PUBLIC        _hal_nrf_set_address
+  C:0046H         PUBLIC        hal_nrf_activate_features
+  C:06DFH         PUBLIC        hal_nrf_get_rx_fifo_status
+  C:060DH         PUBLIC        _hal_nrf_set_address_width
+  C:0653H         PUBLIC        hal_nrf_get_tx_fifo_status
+  C:0660H         PUBLIC        hal_nrf_get_reuse_tx_status
+  D:0098H         PUBLIC        S0CON
+  D:00D8H         PUBLIC        ADCON
+  D:00C8H         PUBLIC        T2CON
+  C:0316H         PUBLIC        _hal_nrf_close_pipe
+  D:00F8H         PUBLIC        FSR
+  C:04A6H         PUBLIC        _hal_nrf_enable_continious_wave
+  C:0635H         PUBLIC        _hal_nrf_clear_irq_flag
+  C:0768H         PUBLIC        _hal_nrf_read_rx_payload
+  D:00E8H         PUBLIC        RFCON
+  C:074FH         PUBLIC        _hal_nrf_write_tx_payload_noack
+  D:00D0H         PUBLIC        PSW
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 7
+
+
+  C:0762H         PUBLIC        hal_nrf_read_rx_payload_width
+  D:00C0H         PUBLIC        IRCON
+  C:066DH         PUBLIC        _hal_nrf_read_reg
+  B:00E8H.1       PUBLIC        RFCSN
+  D:00E6H         PUBLIC        SPIRSTAT
+  -------         PROC          _HAL_NRF_SET_OPERATION_MODE
+  D:000EH         SYMBOL        op_mode
+  -------         DO            
+  D:000FH         SYMBOL        config
+  -------         ENDDO         
+  C:0573H         LINE#         189
+  C:0575H         LINE#         190
+  C:0575H         LINE#         192
+  C:057CH         LINE#         194
+  C:0583H         LINE#         195
+  C:0583H         LINE#         196
+  C:0588H         LINE#         197
+  C:058AH         LINE#         199
+  C:058AH         LINE#         200
+  C:058FH         LINE#         201
+  C:058FH         LINE#         203
+  -------         ENDPROC       _HAL_NRF_SET_OPERATION_MODE
+  -------         PROC          _HAL_NRF_SET_POWER_MODE
+  D:000EH         SYMBOL        pwr_mode
+  -------         DO            
+  D:000FH         SYMBOL        config
+  -------         ENDDO         
+  C:0596H         LINE#         206
+  C:0598H         LINE#         207
+  C:0598H         LINE#         209
+  C:059FH         LINE#         211
+  C:05A6H         LINE#         212
+  C:05A6H         LINE#         213
+  C:05ABH         LINE#         214
+  C:05ADH         LINE#         216
+  C:05ADH         LINE#         217
+  C:05B2H         LINE#         218
+  C:05B2H         LINE#         220
+  -------         ENDPROC       _HAL_NRF_SET_POWER_MODE
+  -------         PROC          _HAL_NRF_SET_CRC_MODE
+  D:0036H         SYMBOL        crc_mode
+  -------         DO            
+  D:0037H         SYMBOL        config
+  -------         ENDDO         
+  C:0003H         LINE#         223
+  C:0005H         LINE#         224
+  C:0005H         LINE#         226
+  C:000CH         LINE#         228
+  C:0018H         LINE#         229
+  C:0018H         LINE#         230
+  C:0018H         LINE#         231
+  C:001FH         LINE#         232
+  C:0021H         LINE#         233
+  C:0021H         LINE#         234
+  C:0028H         LINE#         235
+  C:002FH         LINE#         236
+  C:0031H         LINE#         237
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 8
+
+
+  C:0031H         LINE#         238
+  C:0038H         LINE#         239
+  C:003FH         LINE#         240
+  C:003FH         LINE#         241
+  C:003FH         LINE#         242
+  C:003FH         LINE#         243
+  C:003FH         LINE#         245
+  -------         ENDPROC       _HAL_NRF_SET_CRC_MODE
+  -------         PROC          _HAL_NRF_SET_IRQ_MODE
+  D:0030H         SYMBOL        int_source
+  D:0031H         SYMBOL        irq_state
+  -------         DO            
+  D:0032H         SYMBOL        config
+  -------         ENDDO         
+  C:01FFH         LINE#         248
+  C:0203H         LINE#         249
+  C:0203H         LINE#         251
+  C:020AH         LINE#         253
+  C:0217H         LINE#         254
+  C:0217H         LINE#         255
+  C:0217H         LINE#         256
+  C:022DH         LINE#         257
+  C:022FH         LINE#         258
+  C:022FH         LINE#         259
+  C:0246H         LINE#         260
+  C:0248H         LINE#         261
+  C:0248H         LINE#         262
+  C:0263H         LINE#         263
+  C:0263H         LINE#         264
+  C:0263H         LINE#         266
+  -------         ENDPROC       _HAL_NRF_SET_IRQ_MODE
+  -------         PROC          HAL_NRF_GET_CLEAR_IRQ_FLAGS
+  -------         DO            
+  D:0007H         SYMBOL        retval
+  -------         ENDDO         
+  C:067AH         LINE#         269
+  C:067AH         LINE#         270
+  C:067AH         LINE#         273
+  C:0681H         LINE#         275
+  C:0685H         LINE#         276
+  -------         ENDPROC       HAL_NRF_GET_CLEAR_IRQ_FLAGS
+  -------         PROC          _HAL_NRF_CLEAR_IRQ_FLAG
+  D:0007H         SYMBOL        int_source
+  C:0635H         LINE#         278
+  C:0635H         LINE#         279
+  C:0635H         LINE#         280
+  -------         ENDPROC       _HAL_NRF_CLEAR_IRQ_FLAG
+  -------         PROC          HAL_NRF_GET_IRQ_FLAGS
+  C:0739H         LINE#         283
+  C:0739H         LINE#         284
+  C:0739H         LINE#         285
+  C:0740H         LINE#         286
+  -------         ENDPROC       HAL_NRF_GET_IRQ_FLAGS
+  -------         PROC          _HAL_NRF_OPEN_PIPE
+  D:0021H         SYMBOL        pipe_num
+  D:0022H         SYMBOL        auto_ack
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 9
+
+
+  D:0023H         SYMBOL        en_rxaddr
+  D:0024H         SYMBOL        en_aa
+  -------         ENDDO         
+  C:026AH         LINE#         288
+  C:026EH         LINE#         289
+  C:026EH         LINE#         292
+  C:0275H         LINE#         293
+  C:027CH         LINE#         295
+  C:0288H         LINE#         296
+  C:0288H         LINE#         297
+  C:0288H         LINE#         298
+  C:0288H         LINE#         299
+  C:0288H         LINE#         300
+  C:0288H         LINE#         301
+  C:0288H         LINE#         302
+  C:0288H         LINE#         303
+  C:0298H         LINE#         305
+  C:029CH         LINE#         306
+  C:029CH         LINE#         307
+  C:029FH         LINE#         308
+  C:02A1H         LINE#         310
+  C:02A1H         LINE#         311
+  C:02A5H         LINE#         312
+  C:02A5H         LINE#         313
+  C:02A7H         LINE#         315
+  C:02A7H         LINE#         316
+  C:02AAH         LINE#         318
+  C:02AEH         LINE#         319
+  C:02AEH         LINE#         320
+  C:02B1H         LINE#         321
+  C:02B3H         LINE#         323
+  C:02B3H         LINE#         324
+  C:02B6H         LINE#         325
+  C:02B6H         LINE#         326
+  C:02B6H         LINE#         328
+  C:02B6H         LINE#         329
+  C:02B6H         LINE#         330
+  C:02B6H         LINE#         332
+  C:02BDH         LINE#         333
+  -------         ENDPROC       _HAL_NRF_OPEN_PIPE
+  -------         PROC          _HAL_NRF_CLOSE_PIPE
+  D:0033H         SYMBOL        pipe_num
+  -------         DO            
+  D:0034H         SYMBOL        en_rxaddr
+  D:0035H         SYMBOL        en_aa
+  -------         ENDDO         
+  C:0316H         LINE#         336
+  C:0318H         LINE#         337
+  C:0318H         LINE#         340
+  C:031FH         LINE#         341
+  C:0326H         LINE#         343
+  C:0332H         LINE#         344
+  C:0332H         LINE#         345
+  C:0332H         LINE#         346
+  C:0332H         LINE#         347
+  C:0332H         LINE#         348
+  C:0332H         LINE#         349
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 10
+
+
+  C:0332H         LINE#         350
+  C:0332H         LINE#         351
+  C:0342H         LINE#         352
+  C:0344H         LINE#         353
+  C:0346H         LINE#         355
+  C:0346H         LINE#         356
+  C:0349H         LINE#         357
+  C:034BH         LINE#         358
+  C:034BH         LINE#         360
+  C:034BH         LINE#         361
+  C:034BH         LINE#         362
+  C:034BH         LINE#         364
+  C:0352H         LINE#         365
+  -------         ENDPROC       _HAL_NRF_CLOSE_PIPE
+  -------         PROC          _HAL_NRF_SET_ADDRESS
+  D:0025H         SYMBOL        address
+  D:0026H         SYMBOL        addr
+  C:0359H         LINE#         368
+  C:0361H         LINE#         369
+  C:0361H         LINE#         370
+  C:0370H         LINE#         371
+  C:0370H         LINE#         372
+  C:0370H         LINE#         373
+  C:0370H         LINE#         374
+  C:0370H         LINE#         375
+  C:0383H         LINE#         376
+  C:0383H         LINE#         377
+  C:0383H         LINE#         378
+  C:0383H         LINE#         379
+  C:0383H         LINE#         380
+  C:0383H         LINE#         381
+  C:0395H         LINE#         382
+  C:0395H         LINE#         384
+  C:0395H         LINE#         385
+  C:0395H         LINE#         386
+  C:0395H         LINE#         387
+  -------         ENDPROC       _HAL_NRF_SET_ADDRESS
+  -------         PROC          _HAL_NRF_GET_ADDRESS
+  D:0029H         SYMBOL        address
+  D:002AH         SYMBOL        addr
+  C:0441H         LINE#         389
+  C:0449H         LINE#         390
+  C:0449H         LINE#         391
+  C:0456H         LINE#         392
+  C:0456H         LINE#         393
+  C:0456H         LINE#         394
+  C:0456H         LINE#         395
+  C:0456H         LINE#         396
+  C:0461H         LINE#         397
+  C:0461H         LINE#         398
+  C:0473H         LINE#         399
+  C:0475H         LINE#         400
+  C:0475H         LINE#         401
+  -------         ENDPROC       _HAL_NRF_GET_ADDRESS
+  -------         PROC          _HAL_NRF_SET_AUTO_RETR
+  D:0003H         SYMBOL        retr
+  D:0004H         SYMBOL        delay
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 11
+
+
+  -------         DO            
+  D:0046H         SYMBOL        setup_retr
+  -------         ENDDO         
+  C:0476H         LINE#         403
+  C:0478H         LINE#         404
+  C:0478H         LINE#         406
+  C:0493H         LINE#         407
+  C:049FH         LINE#         409
+  -------         ENDPROC       _HAL_NRF_SET_AUTO_RETR
+  -------         PROC          _HAL_NRF_SET_ADDRESS_WIDTH
+  D:0007H         SYMBOL        aw
+  -------         DO            
+  D:0047H         SYMBOL        setup_aw
+  -------         ENDDO         
+  C:060DH         LINE#         412
+  C:060DH         LINE#         413
+  C:060DH         LINE#         415
+  C:061BH         LINE#         417
+  -------         ENDPROC       _HAL_NRF_SET_ADDRESS_WIDTH
+  -------         PROC          HAL_NRF_GET_ADDRESS_WIDTH
+  C:06CBH         LINE#         420
+  C:06CBH         LINE#         421
+  C:06CBH         LINE#         422
+  C:06D4H         LINE#         423
+  -------         ENDPROC       HAL_NRF_GET_ADDRESS_WIDTH
+  -------         PROC          _HAL_NRF_SET_RX_PAYLOAD_WIDTH
+  D:0007H         SYMBOL        pipe_num
+  D:0005H         SYMBOL        pload_width
+  C:0741H         LINE#         425
+  C:0741H         LINE#         426
+  C:0741H         LINE#         427
+  -------         ENDPROC       _HAL_NRF_SET_RX_PAYLOAD_WIDTH
+  -------         PROC          _HAL_NRF_GET_PIPE_STATUS
+  D:0012H         SYMBOL        pipe_num
+  -------         DO            
+  D:0013H         SYMBOL        en_rxaddr
+  D:0014H         SYMBOL        en_aa
+  D:0015H         SYMBOL        en_rx_r
+  D:0016H         SYMBOL        en_aa_r
+  -------         ENDDO         
+  C:00FBH         LINE#         430
+  C:00FDH         LINE#         431
+  C:00FDH         LINE#         436
+  C:0104H         LINE#         437
+  C:010BH         LINE#         439
+  C:0120H         LINE#         440
+  C:0120H         LINE#         441
+  C:0120H         LINE#         442
+  C:0127H         LINE#         443
+  C:012AH         LINE#         444
+  C:012CH         LINE#         445
+  C:012CH         LINE#         446
+  C:0135H         LINE#         447
+  C:013AH         LINE#         448
+  C:013CH         LINE#         449
+  C:013CH         LINE#         450
+  C:0145H         LINE#         451
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 12
+
+
+  C:014AH         LINE#         452
+  C:014CH         LINE#         453
+  C:014CH         LINE#         454
+  C:0156H         LINE#         455
+  C:015CH         LINE#         456
+  C:015EH         LINE#         457
+  C:015EH         LINE#         458
+  C:0166H         LINE#         459
+  C:016AH         LINE#         460
+  C:016CH         LINE#         461
+  C:016CH         LINE#         462
+  C:0175H         LINE#         463
+  C:017EH         LINE#         464
+  C:0180H         LINE#         465
+  C:0180H         LINE#         466
+  C:0183H         LINE#         467
+  C:0185H         LINE#         468
+  C:0185H         LINE#         469
+  C:0185H         LINE#         471
+  C:018CH         LINE#         472
+  -------         ENDPROC       _HAL_NRF_GET_PIPE_STATUS
+  -------         PROC          HAL_NRF_GET_AUTO_RETR_STATUS
+  C:0756H         LINE#         474
+  C:0756H         LINE#         475
+  C:0756H         LINE#         476
+  C:075BH         LINE#         477
+  -------         ENDPROC       HAL_NRF_GET_AUTO_RETR_STATUS
+  -------         PROC          HAL_NRF_GET_PACKET_LOST_CTR
+  C:0646H         LINE#         479
+  C:0646H         LINE#         480
+  C:0646H         LINE#         481
+  C:0652H         LINE#         482
+  -------         ENDPROC       HAL_NRF_GET_PACKET_LOST_CTR
+  -------         PROC          _HAL_NRF_GET_RX_PAYLOAD_WIDTH
+  D:0007H         SYMBOL        pipe_num
+  -------         DO            
+  D:0048H         SYMBOL        pw
+  -------         ENDDO         
+  C:03D3H         LINE#         484
+  C:03D3H         LINE#         485
+  C:03D3H         LINE#         488
+  C:03E7H         LINE#         489
+  C:03E7H         LINE#         490
+  C:03E7H         LINE#         491
+  C:03E9H         LINE#         492
+  C:03EBH         LINE#         493
+  C:03EBH         LINE#         494
+  C:03EDH         LINE#         495
+  C:03EFH         LINE#         496
+  C:03EFH         LINE#         497
+  C:03F1H         LINE#         498
+  C:03F3H         LINE#         499
+  C:03F3H         LINE#         500
+  C:03F5H         LINE#         501
+  C:03F7H         LINE#         502
+  C:03F7H         LINE#         503
+  C:03F9H         LINE#         504
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 13
+
+
+  C:03FBH         LINE#         505
+  C:03FBH         LINE#         506
+  C:0402H         LINE#         507
+  C:0404H         LINE#         508
+  C:0404H         LINE#         509
+  C:0407H         LINE#         510
+  C:0407H         LINE#         511
+  C:0407H         LINE#         513
+  C:0409H         LINE#         514
+  -------         ENDPROC       _HAL_NRF_GET_RX_PAYLOAD_WIDTH
+  -------         PROC          _HAL_NRF_SET_RF_CHANNEL
+  D:0007H         SYMBOL        channel
+  -------         DO            
+  D:0049H         SYMBOL        rf_ch
+  -------         ENDDO         
+  C:0622H         LINE#         516
+  C:0622H         LINE#         517
+  C:0622H         LINE#         519
+  C:062EH         LINE#         521
+  -------         ENDPROC       _HAL_NRF_SET_RF_CHANNEL
+  -------         PROC          _HAL_NRF_SET_OUTPUT_POWER
+  D:0038H         SYMBOL        power
+  -------         DO            
+  D:0039H         SYMBOL        rf_setup
+  -------         ENDDO         
+  C:05B9H         LINE#         524
+  C:05BBH         LINE#         525
+  C:05BBH         LINE#         527
+  C:05C2H         LINE#         529
+  C:05D1H         LINE#         531
+  -------         ENDPROC       _HAL_NRF_SET_OUTPUT_POWER
+  -------         PROC          _HAL_NRF_SET_DATARATE
+  D:003AH         SYMBOL        datarate
+  -------         DO            
+  D:003BH         SYMBOL        rf_setup
+  -------         ENDDO         
+  C:0396H         LINE#         534
+  C:0398H         LINE#         535
+  C:0398H         LINE#         537
+  C:039FH         LINE#         539
+  C:03A7H         LINE#         540
+  C:03A7H         LINE#         541
+  C:03A7H         LINE#         542
+  C:03ACH         LINE#         543
+  C:03ACH         LINE#         544
+  C:03AEH         LINE#         545
+  C:03AEH         LINE#         546
+  C:03B5H         LINE#         547
+  C:03BCH         LINE#         548
+  C:03BEH         LINE#         549
+  C:03BEH         LINE#         550
+  C:03BEH         LINE#         551
+  C:03C5H         LINE#         552
+  C:03CCH         LINE#         553
+  C:03CCH         LINE#         554
+  C:03CCH         LINE#         556
+  -------         ENDPROC       _HAL_NRF_SET_DATARATE
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 14
+
+
+  -------         PROC          HAL_NRF_RX_FIFO_EMPTY
+  C:06D5H         LINE#         559
+  C:06D5H         LINE#         560
+  C:06D5H         LINE#         561
+  C:06DEH         LINE#         562
+  -------         ENDPROC       HAL_NRF_RX_FIFO_EMPTY
+  -------         PROC          HAL_NRF_RX_FIFO_FULL
+  C:0686H         LINE#         564
+  C:0686H         LINE#         565
+  C:0686H         LINE#         566
+  C:0691H         LINE#         567
+  -------         ENDPROC       HAL_NRF_RX_FIFO_FULL
+  -------         PROC          HAL_NRF_TX_FIFO_EMPTY
+  C:06B6H         LINE#         569
+  C:06B6H         LINE#         570
+  C:06B6H         LINE#         571
+  C:06C0H         LINE#         572
+  -------         ENDPROC       HAL_NRF_TX_FIFO_EMPTY
+  -------         PROC          HAL_NRF_TX_FIFO_FULL
+  C:0692H         LINE#         574
+  C:0692H         LINE#         575
+  C:0692H         LINE#         576
+  C:069DH         LINE#         577
+  -------         ENDPROC       HAL_NRF_TX_FIFO_FULL
+  -------         PROC          HAL_NRF_GET_TX_FIFO_STATUS
+  C:0653H         LINE#         579
+  C:0653H         LINE#         580
+  C:0653H         LINE#         581
+  C:065FH         LINE#         582
+  -------         ENDPROC       HAL_NRF_GET_TX_FIFO_STATUS
+  -------         PROC          HAL_NRF_GET_RX_FIFO_STATUS
+  C:06DFH         LINE#         584
+  C:06DFH         LINE#         585
+  C:06DFH         LINE#         586
+  C:06E8H         LINE#         587
+  -------         ENDPROC       HAL_NRF_GET_RX_FIFO_STATUS
+  -------         PROC          HAL_NRF_GET_FIFO_STATUS
+  C:075CH         LINE#         589
+  C:075CH         LINE#         590
+  C:075CH         LINE#         591
+  C:0761H         LINE#         592
+  -------         ENDPROC       HAL_NRF_GET_FIFO_STATUS
+  -------         PROC          HAL_NRF_GET_TRANSMIT_ATTEMPTS
+  C:06E9H         LINE#         594
+  C:06E9H         LINE#         595
+  C:06E9H         LINE#         596
+  C:06F2H         LINE#         597
+  -------         ENDPROC       HAL_NRF_GET_TRANSMIT_ATTEMPTS
+  -------         PROC          HAL_NRF_GET_CARRIER_DETECT
+  C:06F3H         LINE#         599
+  C:06F3H         LINE#         600
+  C:06F3H         LINE#         601
+  C:06FCH         LINE#         602
+  -------         ENDPROC       HAL_NRF_GET_CARRIER_DETECT
+  -------         PROC          HAL_NRF_ACTIVATE_FEATURES
+  C:0046H         LINE#         604
+  C:0046H         LINE#         605
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 15
+
+
+  -------         ENDPROC       HAL_NRF_ACTIVATE_FEATURES
+  -------         PROC          _HAL_NRF_SETUP_DYNAMIC_PAYLOAD
+  D:0007H         SYMBOL        setup
+  -------         DO            
+  D:004AH         SYMBOL        dynpd
+  -------         ENDDO         
+  C:069EH         LINE#         607
+  C:069EH         LINE#         608
+  C:069EH         LINE#         610
+  C:06A3H         LINE#         612
+  -------         ENDPROC       _HAL_NRF_SETUP_DYNAMIC_PAYLOAD
+  -------         PROC          _HAL_NRF_ENABLE_DYNAMIC_PAYLOAD
+  D:003CH         SYMBOL        enable
+  -------         DO            
+  D:003DH         SYMBOL        feature
+  -------         ENDDO         
+  C:04D2H         LINE#         615
+  C:04D4H         LINE#         616
+  C:04D4H         LINE#         618
+  C:04DBH         LINE#         619
+  C:04F5H         LINE#         621
+  -------         ENDPROC       _HAL_NRF_ENABLE_DYNAMIC_PAYLOAD
+  -------         PROC          _HAL_NRF_ENABLE_ACK_PAYLOAD
+  D:003EH         SYMBOL        enable
+  -------         DO            
+  D:003FH         SYMBOL        feature
+  -------         ENDDO         
+  C:0525H         LINE#         624
+  C:0527H         LINE#         625
+  C:0527H         LINE#         627
+  C:052EH         LINE#         628
+  C:0546H         LINE#         630
+  -------         ENDPROC       _HAL_NRF_ENABLE_ACK_PAYLOAD
+  -------         PROC          _HAL_NRF_ENABLE_DYNAMIC_ACK
+  D:0040H         SYMBOL        enable
+  -------         DO            
+  D:0041H         SYMBOL        feature
+  -------         ENDDO         
+  C:054DH         LINE#         633
+  C:054FH         LINE#         634
+  C:054FH         LINE#         636
+  C:0556H         LINE#         637
+  C:056CH         LINE#         639
+  -------         ENDPROC       _HAL_NRF_ENABLE_DYNAMIC_ACK
+  -------         PROC          _HAL_NRF_WRITE_TX_PAYLOAD
+  D:0001H         SYMBOL        tx_pload
+  D:0005H         SYMBOL        length
+  C:0748H         LINE#         642
+  C:0748H         LINE#         643
+  C:0748H         LINE#         644
+  -------         ENDPROC       _HAL_NRF_WRITE_TX_PAYLOAD
+  -------         PROC          _HAL_NRF_WRITE_TX_PAYLOAD_NOACK
+  D:0001H         SYMBOL        tx_pload
+  D:0005H         SYMBOL        length
+  C:074FH         LINE#         647
+  C:074FH         LINE#         648
+  C:074FH         LINE#         649
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 16
+
+
+  -------         ENDPROC       _HAL_NRF_WRITE_TX_PAYLOAD_NOACK
+  -------         PROC          _HAL_NRF_WRITE_ACK_PAYLOAD
+  D:0007H         SYMBOL        pipe
+  D:0001H         SYMBOL        tx_pload
+  D:001BH         SYMBOL        length
+  C:06FDH         LINE#         652
+  C:06FDH         LINE#         653
+  C:06FDH         LINE#         654
+  -------         ENDPROC       _HAL_NRF_WRITE_ACK_PAYLOAD
+  -------         PROC          HAL_NRF_READ_RX_PAYLOAD_WIDTH
+  C:0762H         LINE#         657
+  C:0762H         LINE#         658
+  C:0762H         LINE#         659
+  C:0767H         LINE#         660
+  -------         ENDPROC       HAL_NRF_READ_RX_PAYLOAD_WIDTH
+  -------         PROC          _HAL_NRF_READ_RX_PAYLOAD
+  D:0001H         SYMBOL        rx_pload
+  C:0768H         LINE#         662
+  C:0768H         LINE#         663
+  C:0768H         LINE#         664
+  C:076DH         LINE#         665
+  -------         ENDPROC       _HAL_NRF_READ_RX_PAYLOAD
+  -------         PROC          HAL_NRF_GET_RX_DATA_SOURCE
+  C:0707H         LINE#         667
+  C:0707H         LINE#         668
+  C:0707H         LINE#         669
+  C:0710H         LINE#         670
+  -------         ENDPROC       HAL_NRF_GET_RX_DATA_SOURCE
+  -------         PROC          HAL_NRF_REUSE_TX
+  C:0711H         LINE#         672
+  C:0711H         LINE#         673
+  C:0711H         LINE#         674
+  C:0713H         LINE#         675
+  C:0718H         LINE#         676
+  C:071AH         LINE#         677
+  -------         ENDPROC       HAL_NRF_REUSE_TX
+  -------         PROC          HAL_NRF_GET_REUSE_TX_STATUS
+  C:0660H         LINE#         679
+  C:0660H         LINE#         680
+  C:0660H         LINE#         681
+  C:066CH         LINE#         682
+  -------         ENDPROC       HAL_NRF_GET_REUSE_TX_STATUS
+  -------         PROC          HAL_NRF_FLUSH_RX
+  C:071BH         LINE#         684
+  C:071BH         LINE#         685
+  C:071BH         LINE#         686
+  C:071DH         LINE#         687
+  C:0722H         LINE#         688
+  C:0724H         LINE#         689
+  -------         ENDPROC       HAL_NRF_FLUSH_RX
+  -------         PROC          HAL_NRF_FLUSH_TX
+  C:0725H         LINE#         691
+  C:0725H         LINE#         692
+  C:0725H         LINE#         693
+  C:0727H         LINE#         694
+  C:072CH         LINE#         695
+  C:072EH         LINE#         696
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 17
+
+
+  -------         ENDPROC       HAL_NRF_FLUSH_TX
+  -------         PROC          HAL_NRF_NOP
+  -------         DO            
+  D:0007H         SYMBOL        retval
+  -------         ENDDO         
+  C:072FH         LINE#         698
+  C:072FH         LINE#         699
+  C:072FH         LINE#         702
+  C:0731H         LINE#         703
+  C:0736H         LINE#         704
+  C:0738H         LINE#         706
+  C:0738H         LINE#         707
+  -------         ENDPROC       HAL_NRF_NOP
+  -------         PROC          _HAL_NRF_SET_PLL_MODE
+  D:0042H         SYMBOL        pll_lock
+  -------         DO            
+  D:0043H         SYMBOL        rf_setup
+  -------         ENDDO         
+  C:04FCH         LINE#         709
+  C:04FEH         LINE#         710
+  C:04FEH         LINE#         712
+  C:0505H         LINE#         713
+  C:051EH         LINE#         715
+  -------         ENDPROC       _HAL_NRF_SET_PLL_MODE
+  -------         PROC          _HAL_NRF_ENABLE_CONTINIOUS_WAVE
+  D:0044H         SYMBOL        enable
+  -------         DO            
+  D:0045H         SYMBOL        rf_setup
+  -------         ENDDO         
+  C:04A6H         LINE#         718
+  C:04A8H         LINE#         719
+  C:04A8H         LINE#         721
+  C:04AFH         LINE#         722
+  C:04CBH         LINE#         724
+  -------         ENDPROC       _HAL_NRF_ENABLE_CONTINIOUS_WAVE
+  -------         PROC          _HAL_NRF_READ_REG
+  D:0007H         SYMBOL        reg
+  -------         DO            
+  D:0007H         SYMBOL        temp
+  -------         ENDDO         
+  C:066DH         LINE#         727
+  C:066DH         LINE#         728
+  C:066DH         LINE#         731
+  C:066FH         LINE#         732
+  C:0672H         LINE#         733
+  C:0677H         LINE#         734
+  C:0679H         LINE#         736
+  C:0679H         LINE#         737
+  -------         ENDPROC       _HAL_NRF_READ_REG
+  -------         PROC          _HAL_NRF_WRITE_REG
+  D:0007H         SYMBOL        reg
+  D:0010H         SYMBOL        value
+  -------         DO            
+  D:0011H         SYMBOL        retval
+  -------         ENDDO         
+  C:05F6H         LINE#         739
+  C:05F8H         LINE#         740
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 18
+
+
+  C:05F8H         LINE#         743
+  C:05FAH         LINE#         744
+  C:0603H         LINE#         745
+  C:0608H         LINE#         746
+  C:060AH         LINE#         748
+  C:060CH         LINE#         749
+  -------         ENDPROC       _HAL_NRF_WRITE_REG
+  -------         PROC          _HAL_NRF_READ_MULTIBYTE_REG
+  D:0008H         SYMBOL        reg
+  D:0009H         SYMBOL        pbuf
+  -------         DO            
+  D:000CH         SYMBOL        ctr
+  D:000DH         SYMBOL        length
+  -------         ENDDO         
+  C:018DH         LINE#         751
+  C:0195H         LINE#         752
+  C:0195H         LINE#         754
+  C:01A6H         LINE#         755
+  C:01A6H         LINE#         756
+  C:01A6H         LINE#         757
+  C:01A6H         LINE#         758
+  C:01A6H         LINE#         759
+  C:01ADH         LINE#         760
+  C:01AFH         LINE#         761
+  C:01B4H         LINE#         762
+  C:01B6H         LINE#         764
+  C:01B6H         LINE#         765
+  C:01C1H         LINE#         766
+  C:01C1H         LINE#         767
+  C:01C8H         LINE#         768
+  C:01CAH         LINE#         769
+  C:01CFH         LINE#         770
+  C:01D1H         LINE#         777
+  C:01D1H         LINE#         778
+  C:01D6H         LINE#         779
+  C:01D6H         LINE#         780
+  C:01D6H         LINE#         782
+  C:01DDH         LINE#         783
+  C:01DDH         LINE#         784
+  C:01F4H         LINE#         785
+  C:01F6H         LINE#         787
+  C:01F8H         LINE#         789
+  C:01FEH         LINE#         790
+  -------         ENDPROC       _HAL_NRF_READ_MULTIBYTE_REG
+  -------         PROC          _HAL_NRF_WRITE_MULTIBYTE_REG
+  D:0007H         SYMBOL        cmd
+  D:001DH         SYMBOL        pbuf
+  D:0020H         SYMBOL        length
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0005H         SYMBOL        next
+  D:0006H         SYMBOL        dummy
+  -------         ENDDO         
+  C:040AH         LINE#         792
+  C:0410H         LINE#         793
+  C:0410H         LINE#         795
+  C:0412H         LINE#         797
+BL51 BANKED LINKER/LOCATER V6.20                                                      01/12/2010  14:00:04  PAGE 19
+
+
+  C:0414H         LINE#         799
+  C:041CH         LINE#         800
+  C:041CH         LINE#         801
+  C:042BH         LINE#         802
+  C:0430H         LINE#         804
+  C:0432H         LINE#         805
+  C:0434H         LINE#         806
+  C:0437H         LINE#         808
+  C:043CH         LINE#         810
+  C:043EH         LINE#         811
+  C:0440H         LINE#         812
+  -------         ENDPROC       _HAL_NRF_WRITE_MULTIBYTE_REG
+  -------         ENDMOD        HAL_NRF
+
+  -------         MODULE        ?C?CLDPTR
+  C:004EH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0067H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:0094H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:00A6H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=76.0 xdata=0 code=1898
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

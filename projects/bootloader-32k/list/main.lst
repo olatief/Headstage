@@ -1,0 +1,90 @@
+C51 COMPILER V8.12   MAIN                                                                  02/01/2011 15:40:55 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c OMF2 ROM(COMPACT) OPTIMIZE(9,SPEED) BROWSE INCDIR(..\..\compiler\c51
+                    -) DEBUG PRINT(.\list\main.lst) OBJECT(.\build\main.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5718 $
+  12           */
+  13          
+  14          /** @file
+  15           * This file copies the bootloader code to XDATA RAM and starts the bootlader command parser
+  16           *
+  17           */
+  18          #include <srom.h>
+  19          #include <stdint.h>
+  20          
+  21          #include "bootloader.h"
+  22          #include "config.h"
+  23          
+  24          #if __C51__ < 810
+              #error "This project requires Keil C51 v8.10 or higher"
+              #endif
+  27          
+  28          //
+  29          // For a description of the Special ROM (SROM) functionality in Keil please
+  30          // search for SROM on the Keil web site and read the two articles
+  31          // "C51: IN-SYSTEM FLASH PROGRAMMING (PART 1)" and "C51: IN-SYSTEM FLASH
+  32          // PROGRAMMING (PART 2)"
+  33          //
+  34          // These macros will place the code/const from the BOOTLOADER segment in
+  35          // the hex file/flash at the location given by SROM (see linker settings):
+  36          SROM_MC (CODE_BOOTLOADER)
+  37          SROM_MC (CONST_BOOTLOADER)
+  38          
+  39          void main(void)
+  40          {
+  41   1          uint16_t i;
+  42   1          
+  43   1          //
+  44   1          // copy bootloader functions from FLASH to RAM:
+  45   1          uint8_t code *psrc = (uint8_t code*)SROM_MC_SRC(CODE_BOOTLOADER);
+  46   1          uint8_t xdata *pdest = (uint8_t xdata*)SROM_MC_TRG(CODE_BOOTLOADER);
+  47   1          for(i=0;i<SROM_MC_LEN(CODE_BOOTLOADER);i++)  
+  48   1          {
+  49   2              *pdest++ = *psrc++;
+  50   2          }
+  51   1          //
+  52   1          // Copy bootloader constants from FLASH to RAM:
+  53   1          psrc = (uint8_t code*)SROM_MC_SRC(CONST_BOOTLOADER);
+  54   1          pdest = (uint8_t xdata*)SROM_MC_TRG(CONST_BOOTLOADER);
+C51 COMPILER V8.12   MAIN                                                                  02/01/2011 15:40:55 PAGE 2   
+
+  55   1          for(i=0;i<SROM_MC_LEN(CONST_BOOTLOADER);i++)
+  56   1          {
+  57   2              *pdest++ = *psrc++;
+  58   2          }
+  59   1          bootloader(); // Will never return
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

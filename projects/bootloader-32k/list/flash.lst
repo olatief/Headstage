@@ -1,0 +1,130 @@
+C51 COMPILER V8.12   FLASH                                                                 02/01/2011 15:40:56 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE FLASH
+OBJECT MODULE PLACED IN .\build\flash.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE flash.c OMF2 ROM(COMPACT) OPTIMIZE(9,SPEED) BROWSE INCDIR(..\..\compiler\c5
+                    -1) DEBUG PRINT(.\list\flash.lst) OBJECT(.\build\flash.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 5718 $
+  12           */
+  13          
+  14          /** @file
+  15           * Flash (self) programming functions
+  16           *
+  17           */
+  18          #include <Nordic\reg24lu1.h>
+  19          #include "flash.h"
+  20          
+  21          // Place all code and constants in this file in the segment "BOOTLOADER":
+  22          #pragma userclass (code = BOOTLOADER)
+  23          #pragma userclass (const = BOOTLOADER)
+  24          
+  25          void flash_page_erase(uint8_t pn)
+  26          {  
+  27   1          CKCON = 0x01;   // See nRF24LU1p AX PAN
+  28   1          // Enable flash write operation:
+  29   1          FCR = 0xAA;
+  30   1          FCR = 0x55;
+  31   1          WEN = 1;
+  32   1          //
+  33   1          // Write the page address to FCR to start the page erase
+  34   1          // operation:
+  35   1          FCR = pn;
+  36   1          //
+  37   1          // Wait for the erase operation to finish:
+  38   1          while(RDYN == 1)
+  39   1              ;
+  40   1          WEN = 0;
+  41   1          CKCON = 0x02;
+  42   1      }
+  43          
+  44          void flash_bytes_write(uint16_t a, uint8_t xdata *p, uint16_t n)
+  45          {
+  46   1          uint8_t xdata *data pb;
+  47   1      
+  48   1          CKCON = 0x01;
+  49   1          // Enable flash write operation:
+  50   1          FCR = 0xAA;
+  51   1          FCR = 0x55;
+  52   1          WEN = 1;
+  53   1          //
+  54   1          // Write the bytes directly to the flash:
+C51 COMPILER V8.12   FLASH                                                                 02/01/2011 15:40:56 PAGE 2   
+
+  55   1          pb = (uint8_t xdata *)a;
+  56   1          while(n--)
+  57   1          {
+  58   2              *pb++ = *p++;
+  59   2              //
+  60   2              // Wait for the write operation to finish:
+  61   2              while(RDYN == 1)
+  62   2                  ;
+  63   2          }
+  64   1          WEN = 0;
+  65   1          CKCON = 0x02;
+  66   1      }
+  67          
+  68          void flash_byte_write(uint16_t a, uint8_t b)
+  69          {
+  70   1          uint8_t xdata *data pb;
+  71   1          
+  72   1          CKCON = 0x01;
+  73   1          // Enable flash write operation:
+  74   1          FCR = 0xAA;
+  75   1          FCR = 0x55;
+  76   1          WEN = 1;
+  77   1          //
+  78   1          // Write the byte directly to the flash. This operation is "self timed" when
+  79   1          // executing from the flash; the CPU will halt until the operation is
+  80   1          // finished:
+  81   1          pb = (uint8_t xdata *)a;
+  82   1          *pb = b;
+  83   1          //
+  84   1          // When running from XDATA RAM we need to wait for the operation to finish:
+  85   1          while(RDYN == 1)
+  86   1              ;
+  87   1          WEN = 0;
+  88   1          CKCON = 0x02;
+  89   1      }
+  90          
+  91          void flash_bytes_read(uint16_t a, uint8_t xdata *p, uint16_t n)
+  92          {
+  93   1          uint8_t xdata *pb = (uint8_t xdata *)a;
+  94   1          while(n--)
+  95   1          {
+  96   2              *p = *pb;
+  97   2              pb++;
+  98   2              p++;
+  99   2          }
+ 100   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
